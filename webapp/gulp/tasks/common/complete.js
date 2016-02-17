@@ -10,7 +10,6 @@ gulp.task('complete',function(){
   gutils.log(gutils.colors.green('///   Finish building for '+ type + '   ///'));
   gutils.log(gutils.colors.green('///                                     ///'));
   gutils.log(gutils.colors.green('///////////////////////////////////////////'));
-
 });
 
 

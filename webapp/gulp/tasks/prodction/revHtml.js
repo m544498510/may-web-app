@@ -7,8 +7,8 @@ var config = require('./../../config.js');
 gulp.task("revHtml:production",function(){
     return gulp.src([
             config.paths.rev + "**/*.json",
-            config.paths.htmls
+            config.paths.htmlSrc+ "**/*.*"
         ])
         .pipe($.revCollector())
-        .pipe(gulp.dest(config.paths.dist + "html/"));
+        .pipe(gulp.dest(config.paths.htmlDist));
 });

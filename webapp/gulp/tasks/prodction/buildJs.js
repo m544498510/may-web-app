@@ -16,7 +16,7 @@ gulp.task('buildJs:production',function(){
             .pipe($.concat(appNames[i]+'.js'))
             .pipe($.uglify())
             .pipe($.rev())
-            .pipe(gulp.dest(config.paths.dist +'js/'))
+            .pipe(gulp.dest(config.paths.scriptDist))
             .pipe($.rev.manifest({
                 merge: true
             }))

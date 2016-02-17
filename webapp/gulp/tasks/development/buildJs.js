@@ -15,7 +15,7 @@ gulp.task('buildJs',function(){
       .pipe($.ngAnnotate())
       .pipe($.concat(appNames[i]+'.js'))
       .pipe($.size({showFiles:true}))
-      .pipe(gulp.dest(config.paths.dist +'js/'))
+      .pipe(gulp.dest(config.paths.scriptDist))
 
   }
   return result;

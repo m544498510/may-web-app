@@ -5,5 +5,5 @@ var rimraf = require('rimraf');
 var config = require('../../config.js');
 
 gulp.task('clean:styles',function(callback){
-  rimraf(config.paths.dist+"css/", callback);
+  rimraf(config.paths.styleDist, callback);
 });

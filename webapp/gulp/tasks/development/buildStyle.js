@@ -19,7 +19,7 @@ gulp.task('buildStyle',function(){
         precision: 10
       }))
       .pipe($.sourcemaps.write())
-      .pipe(gulp.dest(config.paths.dist +'css/'))
+      .pipe(gulp.dest(config.paths.styleDist))
       .pipe($.size({showFiles:true}))
   }
   return result;

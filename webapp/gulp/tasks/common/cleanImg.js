@@ -5,7 +5,7 @@ var rimraf = require('rimraf');
 var config = require('../../config.js');
 
 gulp.task('clean:images',function(callback){
-  rimraf(config.paths.dist+"img/", callback);
+  rimraf(config.paths.image, callback);
 });
 
 
