@@ -12,7 +12,7 @@ gulp.task('default',function(){
   var type = gutils.env.production ? 'production' : 'development';
 
   if(type == "development"){
-    runSequence(['hintJs','clean'],['buildJs','buildStyle'],'complete');
+    runSequence(['hintJs','clean'],['buildJs','buildStyle','buildHtml'],'complete');
   }else if(type=="production"){
     runSequence('clean:production',['buildJs:production','buildStyle:production','imgMin'],'revHtml:production','complete');
   }

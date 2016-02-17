@@ -15,6 +15,6 @@ gulp.task('imgMin', function () {
       progressive: true,
       interlaced: true
     })))
-    .pipe(gulp.dest(config.paths.dist+"img/"))
+    .pipe(gulp.dest(config.paths.images))
     .pipe($.size({showFiles:true}))
 });

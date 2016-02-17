@@ -14,7 +14,7 @@ module.exports = {
     src: './src/',
     jsSrc: jsSrcPath,
     styleSrc: styleSrc,
-    images:'./src/img/**/*.*',
+    images:appPath+'dist/img/**/*.*',
     htmls:'./src/html/**/*.*',
 
     dist : appPath + 'dist/',

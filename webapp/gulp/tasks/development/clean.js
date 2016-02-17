@@ -8,5 +8,5 @@ var config = require('../../config.js');
 /***
  *  clean task
  */
-gulp.task('clean',['clean:styles','clean:scripts']);
+gulp.task('clean',['clean:styles','clean:scripts','clean:html']);
 
