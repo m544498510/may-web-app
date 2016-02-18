@@ -7,7 +7,7 @@ var stylish = require('jshint-stylish');
 
 // 通过jshint检测js语法
 gulp.task('hintJs', function () {
-  return gulp.src(config.paths.scriptSrc+'**/*.js')
+  return gulp.src(config.paths.scriptSrc)
     .pipe($.jshint(".jshintrc"))
     .pipe($.jshint.reporter(stylish))
 });

@@ -15,25 +15,30 @@ module.exports = {
         src: './src/',
         dist: distPath,
 
-        scriptSrc: jsSrcPath,
+        scriptSrc: jsSrcPath + '**/*.js',
         scriptDist: distPath + 'js/',
 
-        styleSrc: styleSrc,
+        styleSrc: styleSrc + '**/*.scss',
         styleDist: distPath + 'css/',
 
-        htmlSrc: './src/html/',
+        htmlSrc: './src/html/**/*.*',
         htmlDist: distPath + 'html',
 
-        imageSrc:'./src/img/',
+        imageSrc:'./src/img/**/*.*',
+//        imageSrc:[
+//            appPath + 'static/pages/img/**/*.*',
+//            appPath + 'static/global/img/**/*.*'
+//
+//        ],
         imageDist: distPath + 'img/',
 
-        rev: appPath + 'dist/revInfo/',
+        rev: './src/revInfo/',
 
         oldSass: appPath + 'static/pages/css/'
     },
 
     apps: {
-        appNames: ['managerApp'],
+        appNames: ['managerApp','gulpTestModule'],
         managerApp: {
             js: [
                 jsSrcPath + 'managerModules/**/*.js',
@@ -45,8 +50,7 @@ module.exports = {
             view: [
                 appPath + 'WEB-INF/newJsp/task/mytask.jsp'
             ],
-            name: 'managerApp',
-            dist: appPath + 'dist/js/'
+            name: 'managerApp'
         },
         catApp: {
             js: [
@@ -56,8 +60,14 @@ module.exports = {
             styles: [
                 'src/sass/catApp/**/*.scss'
             ],
-            name: 'catApp',
-            dist: appPath + 'dist/js'
+            name: 'catApp'
+        },
+        gulpTestModule:{
+            js:[
+                jsSrcPath + 'testGulpModule/**/*.js'
+            ],
+            styles:[],
+            name:'gulpTest'
         }
     }
 };

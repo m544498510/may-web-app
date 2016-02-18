@@ -6,10 +6,10 @@ var config = require('./../../config.js');
 
 //watch
 gulp.task('watch',function(){
-  gulp.watch(config.paths.scriptSrc+"**/*.js",['buildJs']);
+  gulp.watch(config.paths.scriptSrc,['buildJs']);
 
-  gulp.watch(config.paths.styleSrc+"**/*.scss",['buildStyle']);
+  gulp.watch(config.paths.styleSrc,['buildStyle']);
 
-  gulp.watch(config.paths.image+"**/*.*",['image']);
+  gulp.watch(config.paths.imageSrc,['moveImg']);
 
 });

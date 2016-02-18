@@ -11,16 +11,19 @@ gulp.task('buildJs:production',function(){
     for(var i = 0; i < appNames.length; i++){
         appConfig = config.apps[appNames[i]];
         result = gulp.src(appConfig.js)
+            .pipe($.size())
             .pipe($.angularFilesort())
             .pipe($.ngAnnotate())
             .pipe($.concat(appNames[i]+'.js'))
             .pipe($.uglify())
             .pipe($.rev())
             .pipe(gulp.dest(config.paths.scriptDist))
+            .pipe($.size())
             .pipe($.rev.manifest({
                 merge: true
             }))
             .pipe(gulp.dest(config.paths.rev))
+
     }
     return result;
 });
