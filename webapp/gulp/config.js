@@ -15,7 +15,10 @@ module.exports = {
         src: './src/',
         dist: distPath,
 
-        scriptSrc: jsSrcPath + '**/*.js',
+        scriptSrc: [
+            jsSrcPath + '**/*.js',
+            '!'+jsSrcPath + 'testGulpModule/**/*.js'
+        ],
         scriptDist: distPath + 'js/',
 
         styleSrc: styleSrc + '**/*.scss',
@@ -38,7 +41,7 @@ module.exports = {
     },
 
     apps: {
-        appNames: ['managerApp','gulpTestModule'],
+        appNames: ['managerApp'],
         managerApp: {
             js: [
                 jsSrcPath + 'managerModules/**/*.js',

@@ -16,7 +16,7 @@ gulp.task('buildStyle:production',function(){
             precision: 10
         }))
         .pipe($.rev())
-        .pipe(gulp.dest(config.paths.styleDist))
+        .pipe(gulp.dest(config.paths.styleDist+appConfig.name+'/'))
         .pipe($.rev.manifest({
             merge: true
         }))
