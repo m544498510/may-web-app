@@ -1,0 +1,40 @@
+@import '_components';
+
+/**
+ * page-create-project
+ * author: ccefeg(bt)
+ **/
+
+& .form-group {
+	clear: both;
+	/*overflow: hidden;*/
+	margin-top: 20px;
+}
+
+& a {
+	color: #787878;
+	padding-right: 0;
+	padding-left: 0;
+}
+
+& > li {
+	display: table-cell;
+	/*width: 16.666%;*/
+	width: 140px;
+	text-align: center;
+}
+
+& > li.active > a {
+	border-top-left-radius: 5px !important;
+	border-top-right-radius: 5px !important;
+	color: #738ebb;
+}
+
+#startchat {
+	width: 23px;
+	height: 24px;
+	position: absolute;
+	top: 15px;
+	right: 60px;
+	display: inline-block;
+}

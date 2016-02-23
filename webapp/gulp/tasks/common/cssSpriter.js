@@ -12,7 +12,7 @@ gulp.task('cssSpriter', function() {
         .pipe($.size())
         .pipe($.cssSpriter({
             // The path and file name of where we will save the sprite sheet
-            'spriteSheet': config.paths.src + 'img/spriter/spritesheet.png',
+            'spriteSheet': config.paths.src+'tmp/spriter/spritesheet.png',
             // Because we don't know where you will end up saving the CSS file at this point in the pipe,
             // we need a litle help identifying where it will be.
             'pathToSpriteSheetFromCSS': '../../img/spritesheet.png',
@@ -20,6 +20,6 @@ gulp.task('cssSpriter', function() {
                 padding: 5
             }
         }))
-        .pipe(gulp.dest(config.paths.src+'sass/test/'))
+        .pipe(gulp.dest(config.paths.src+'tmp/test/'))
         .pipe($.size());
 });
