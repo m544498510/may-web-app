@@ -24,7 +24,7 @@ module.exports = {
         styleSrc: styleSrc + '**/*.scss',
         styleDist: distPath + 'css/',
 
-        htmlSrc: './src/html/**/*.*',
+        htmlSrc: './src/html/pages/**/*.*',
         htmlDist: distPath + 'html',
 
         imageSrc:'./src/img/**/*.*',

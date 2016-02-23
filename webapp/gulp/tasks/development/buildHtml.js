@@ -5,8 +5,11 @@
 
 var gulp = require('gulp');
 var config = require('./../../config.js');
+var $ = require('gulp-load-plugins')();
 
 gulp.task("buildHtml",function(){
     return gulp.src(config.paths.htmlSrc)
+        .pipe($.include())
+            .on('error',console.log)
         .pipe(gulp.dest(config.paths.htmlDist));
 });

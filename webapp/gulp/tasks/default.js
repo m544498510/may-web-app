@@ -14,7 +14,7 @@ gulp.task('default',function(){
   if(type == "development"){
     runSequence(['hintJs','clean'],['buildJs','buildStyle','buildHtml','moveImg'],'complete');
   }else if(type=="production"){
-    runSequence('clean',['buildJs:production','buildStyle:production','imgMin'],'revHtml:production','complete');
+    runSequence('clean',['buildJs:production','buildStyle:production','imgMin'],'buildHtml:production','complete');
   }
 
 });
