@@ -16,7 +16,7 @@
         };
         function getData(pageNum,taskStatus,pageSize) {
             pageNum = pageNum ? pageNum : 1;
-            pageSize = pageSize ? pageSize : 25;
+            pageSize = pageSize ? pageSize : 5;
             taskStatus = taskStatus ? taskStatus : 0;
             var config ={
                 method: 'GET',
