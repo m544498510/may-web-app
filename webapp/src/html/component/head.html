@@ -1,2 +1,46 @@
-<div> I am the header. </div>
-<script src="../js/managerApp.js"></script>
+
+
+
+<link href="./static/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
+<script src="./static/global/plugins/bootstrap-toastr/toastr.min.js" ></script>
+
+<!-- BEGIN HEADER -->
+
+<div class="page-header navbar">
+
+    <marquee id="notice" scrollamount="3"
+             style="position:absolute;width:630px;height:30px;line-height:30px;color:#fff;overflow:hidden;top: 33px;">
+        <a href="./user/special" style="color:#FFFFFF;text-decoration: underline;" target="_blank">充马刀送马蹄啦！所有用户充100送50！语资网会员满1000送1000！点击了解详情。</a>
+    </marquee>
+
+    <div class="page-logo pull-left">
+        <a><img src="./static/global/img/logo.png" /></a>
+        <span class="slogan"></span>
+    </div>
+    <div class="top-menu">
+        <ul class="nav navbar-nav pull-right">
+            <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                <a href="./message/mymessage" class="dropdown-toggle">
+                    <i class="icon-envelope"></i> 消息 [<span class="message-num notViewCount">0</span>]
+                </a>
+            </li>
+            <li class="dropdown dropdown-user">
+                <a href="###" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                    <img class="img-circle" alt="" src="./static/pages/img/team-img.png"/>
+
+
+                    <!--                     <img alt="" class="img-circle" src="./static/pages/img/team-img.png"/> -->
+                    <span class="username username-hide-on-mobile">鱼肠</span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <!-- <li><a href=""><i class="icon-envelope-open"></i> 我的消息</a></li> -->
+                    <li><a href="./frame/userInfoPage.do"><i class="icon-user"></i> 我的账号 </a></li>
+                    <li><a href="./user/logout.do"><i class="icon-power"></i> 退出 </a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</div>
