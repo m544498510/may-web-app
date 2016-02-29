@@ -69,7 +69,7 @@ module.exports = function (config) {
         // - PhantomJS
         // - IE (only Windows)
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['PhantomJS','Chrome'],
+        browsers: ['PhantomJS','Chrome','Firefox'],
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits

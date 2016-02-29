@@ -3,3 +3,5 @@ cnpm install -g bower
 cnpm install -g gulp-cli
 cnpm install -g karma-cli
 cnpm install
+bower install
+
