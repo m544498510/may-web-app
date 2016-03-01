@@ -15,10 +15,7 @@ module.exports = {
         src: './src/',
         dist: distPath,
 
-        scriptSrc: [
-            jsSrcPath + '**/*.js',
-            '!'+jsSrcPath + 'testGulpModule/**/*.js'
-        ],
+        scriptSrc: jsSrcPath + '**/*.js',
         scriptDist: distPath + 'js/',
 
         styleSrc: styleSrc + '**/*.scss',

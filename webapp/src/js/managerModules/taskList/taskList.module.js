@@ -8,7 +8,8 @@
     angular
         .module('taskListModule', [
             'utilsModule',
-            'taskListDataServiceModule'
+            'taskListDataServiceModule',
+            'jqPagnationModule'
         ]);
 
 })();

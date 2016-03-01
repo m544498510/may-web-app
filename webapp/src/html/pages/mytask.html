@@ -24,7 +24,8 @@
     <link href="./static/layout/css/layout.css?_t=" rel="stylesheet"/>
     <link href="./static/layout/css/themes/default.css?_t=" rel="stylesheet"
           id="style_color"/>
-    <link href="./static/pages/css/create_project.css?_t=" rel="stylesheet"/>
+    <link href="./static/pages/css/create_project_new.css?_t=" rel="stylesheet"/>
+    <link rel="stylesheet" href="./static/global/plugins/Mricode.Pagination/mricode.pagination.css">
 
 </head>
 <body class="page-header-fixed">
@@ -56,26 +57,35 @@
                 </ul>
 
                 <div class="mypro-tasklist" id="mytask">
-                    <ul class="display-table task-item task-trans" ng-repeat="task in taskListCtrl.taskList">
-                        <li class="task-comp" ng-bind="task.owner_name"></li>
-                        <li class="task-name"><span>翻译</span><span ng-bind="task.doc_name"></span></li>
-                        <li ng-bind="task.deadline_time"></li>
-                        <li ng-bind="task.wordcount">字</li>
-                        <li class="task-finish" ng-bind="task.finish"></li>
-                        <li class="task-mount">
-                            <div id="isMountMem_387">未挂载</div>
-                            <button class="btn btn-circle js-mountCorpus" id="mountMemBut_387" tasksectorid="495"
-                                    taskid="387" tasklabel_ids="2050_政治" trans_mem_id_list=""
-                                    trans_term_id_list="null" tasksourcelangkey="zh-cn" tasktargetlangkey="en">添加
-                            </button>
+                    <ul class="display-table task-item"
+                        ng-repeat="task in taskListCtrl.taskList"
+                        ng-class="task.typeClass">
+
+                        <li class="task-comp" style="text-align:left;width: 10%" ng-bind="task.owner_name"></li>
+                        <li style="text-align:left;width: 10%" ng-bind="task.project_name"></li>
+                        <li class="task-name" style="text-align:left;width: 25%">
+                            <span class="taskTypeName" ng-bind="task.typeName"></span>
+                            <span>-</span>
+                            <span ng-bind="task.doc_name"></span>
                         </li>
-                        <li class="task-op"><i class="fa fa-check" title="已完成"></i><a
-                            href="http://test.urelitetech.com.cn:80/cat/cathome?sectorId=495&amp;taskId=387"
-                            class="btn btn-sm btn-circle" target="_blank">去翻译</a></li>
+                        <li style="text-align:left;width: 12%;" ng-bind="task.deadline_time"></li>
+                        <li style="text-align:left;width: 15%;">
+                            编辑：<span></span><br>校对：<span></span><br>PM：<span>may</span><br>
+                        </li>
+                        <li style="text-align:left;width: 8%;">原文：0<br>译文：0</li>
+                        <li style="text-align:left;width: 6%;" ng-bind="task.finish"></li>
+                        <li class="task-mount" style="width: 6%;">
+                            <div id="isMountMem_1984">未挂载</div>
+                        </li>
+                        <li class="task-op" style="width: 8%;">
+                            <i class="fa fa-check" title="已完成"></i>
+                            <a href="http://localhost:8080/JEEMAACloud/cat/cathome?sectorId=1995&amp;taskId=1984" class="btn btn-sm btn-circle" target="_blank">去查看</a>
+                        </li>
                     </ul>
 
-
                 </div>
+                <jq-pagnation config="taskListCtrl.pagnationConfig"></jq-pagnation>
+
                 <div class="mypro-notasklist hidden">
                     <span>你还没有任务哦！</span>
 
@@ -87,13 +97,6 @@
                                          class="btn btn-circle btn-blue-hollow">创建项目</a></div>
                 </div>
 
-                <input type="hidden" id="pagenum" name="pagenum" value="1"/>
-                <input type="hidden" id="pagesize" name="pagesize" value="5"/>
-                <input type="hidden" name="task_status" id="task_status" value="0"/>
-
-                <ul class="pagination pull-right" id="taskPager">
-
-                </ul>
 
             </div>
         </div>
@@ -135,7 +138,18 @@
 
 <script src="./dist/lib/angular/angular.min.js"></script>
 
-<script src="./dist/js/managerApp.js"></script>
+<script src="./dist/js/commonModules/utils.module.js"></script>
+<script src="./dist/js/commonModules/thirdPlugins/pagnation.directive.js"></script>
+<script src="./dist/js/managerModules/dataServices/taskList.dataService.js"></script>
+<script src="./dist/js/managerModules/taskList/taskList.module.js"></script>
+<script src="./dist/js/managerModules/taskList/taskList.controller.js"></script>
+<script src="./dist/js/managerModules/taskList/taskList.service.js"></script>
+
+
+
+
+
+
 
 </body>
 </html>

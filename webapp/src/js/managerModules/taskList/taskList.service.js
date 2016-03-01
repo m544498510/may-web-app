@@ -9,13 +9,13 @@
         .constant('taskTypeMap',getTaskTypeMap())
         .factory('taskListService', taskListService);
 
-    taskListService.$inject = ['taskTypeMap','utils'];
+    taskListService.$inject = ['taskTypeMap','commonUtils'];
 
     /**
      * taskListService Factory
      * @namespace taskListService
      */
-    function taskListService(taskTypeMap,utils) {
+    function taskListService(taskTypeMap,commonUtils) {
         var service = {
             initTaskList: initTaskList
         };
@@ -32,10 +32,10 @@
             return taskList;
         }
         function getTask(attrMaps){
-            var task = utils.copyObject(attrMaps);
+            var task = commonUtils.copyObject(attrMaps);
             task.finish =  Math.floor(task.finish_per*100)+'%';
 
-            task = utils.copyObject(taskTypeMap[task.tasktype],task)
+            task = commonUtils.copyObject(taskTypeMap[task.tasktype],task)
 
             //3是已终止，4是删除
             if(task.task_status === 3 || task.task_status === 4){
