@@ -1,0 +1,118 @@
+<div class="mypro-prolist-view">
+    <!-- 页面帮助 start -->
+    <div class="help">
+        <i class="page-help-icon"></i>
+
+        <div class="help-content">
+            <p style="text-indent:2em">此页面列出了你负责的所有任务，包括翻译任务、编辑任务和校对任务。</p>
+            <table>
+                <tr class="row">
+                    <td>所属团队：</td>
+                    <td class="text">此任务是由哪个团队分派给你的</td>
+                </tr>
+                <tr class="row">
+                    <td>所属项目：</td>
+                    <td class="text">此任务来自哪个项目</td>
+                </tr>
+                <tr class="row">
+                    <td>任务名称：</td>
+                    <td class="text">显示任务类型和要处理的文件的名称</td>
+                </tr>
+                <tr class="row">
+                    <td>其他参与人：</td>
+                    <td class="text">此文件的翻译、编辑、校对以及项目经理分别是谁</td>
+                </tr>
+                <tr class="row">
+                    <td>字数：</td>
+                    <td class="text">此任务的原文字数和翻译出来的译文字数</td>
+                </tr>
+                <tr class="row">
+                    <td>完成进度：</td>
+                    <td class="text">此任务已完成的百分比</td>
+                </tr>
+                <tr class="row">
+                    <td>挂载记忆库：</td>
+                    <td class="text">挂载译员自己的记忆库，以便在翻译（编辑或校对）过程中自己用。</td>
+                </tr>
+                <tr class="row">
+                    <td>去翻译：</td>
+                    <td class="text">针对翻译任务，点击即可进入翻译界面进行翻译。</td>
+                </tr>
+                <tr class="row">
+                    <td>去编辑：</td>
+                    <td class="text">针对编辑任务，点击即可进入编辑界面进行编辑。</td>
+                </tr>
+                <tr class="row">
+                    <td>去校对：</td>
+                    <td class="text">针对校对任务，点击即可进入校对界面进行校对。</td>
+                </tr>
+                <tr class="row">
+                    <td class='red'>提示：</td>
+                    <td class="text">给任务挂载的记忆库只能查询，不会存储翻译过程中产生的语料。</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- end 页面帮助 -->
+
+    <div class="mypro-tasklist-view" ng-controller="taskListController as taskListCtrl">
+        <ul class="display-table task-head">
+            <li class="task-comp" style='text-align:left;width: 10%'>所属团队</li>
+            <li style='text-align:left;width: 10%;'>所属项目</li>
+            <li style='text-align:left;width: 25%;'>任务名称</li>
+            <li style='text-align:left;width: 12%;'>截止时间</li>
+            <li style='text-align:left;width: 15%;'>其他参与人</li>
+            <li style='text-align:left;width: 8%;'>字数</li>
+            <li style='text-align:left;width: 6%;'>完成进度</li>
+            <li style='width: 6%;'>挂载记忆库</li>
+            <li class="task-op" style='width: 8%;'>操作</li>
+        </ul>
+
+        <div class="mypro-tasklist" id="mytask">
+
+            <ul class="display-table task-item"
+                ng-repeat="task in taskListCtrl.taskList"
+                ng-class="task.typeClass">
+
+                <li class="task-comp" style="text-align:left;width: 10%" ng-bind="task.owner_name"></li>
+                <li style="text-align:left;width: 10%" ng-bind="task.project_name"></li>
+                <li class="task-name" style="text-align:left;width: 25%">
+                    <span class="taskTypeName" ng-bind="task.typeName"></span>
+                    <span>-</span>
+                    <span ng-bind="task.doc_name"></span>
+                </li>
+                <li style="text-align:left;width: 12%;" ng-bind="task.deadline_time"></li>
+                <li style="text-align:left;width: 15%;">
+                    编辑：<span></span><br>校对：<span></span><br>PM：<span>may</span><br>
+                </li>
+                <li style="text-align:left;width: 8%;">原文：0<br>译文：0</li>
+                <li style="text-align:left;width: 6%;" ng-bind="task.finish"></li>
+                <li class="task-mount" style="width: 6%;">
+                    <div id="isMountMem_1984">未挂载</div>
+                </li>
+                <li class="task-op" style="width: 8%;">
+                    <i class="fa fa-check" title="已完成"></i>
+                    <a href="http://localhost:8080/JEEMAACloud/cat/cathome?sectorId=1995&amp;taskId=1984"
+                       class="btn btn-sm btn-circle" target="_blank">去查看</a>
+                </li>
+            </ul>
+            <jq-pagnation config="taskListCtrl.pagnationConfig"></jq-pagnation>
+
+        </div>
+        <div class="mypro-notasklist hidden">
+            <span>你还没有任务哦！</span>
+
+            <div>如果你需要立即开始翻译工作，请先创建项目<br>
+                如果你在等待他人分配工作，请先加入他的团队
+            </div>
+            <div><a href="<%=path%>/team/teamIndex" class="btn btn-circle btn-blue-hollow">加入团队</a> &nbsp;
+                &nbsp; &nbsp; <a href="<%=path%>/projectManager/addProjectView"
+                                 class="btn btn-circle btn-blue-hollow">创建项目</a></div>
+        </div>
+
+        <input type="hidden" id="pagenum" name="pagenum" value="1"/>
+        <input type="hidden" id="pagesize" name="pagesize" value="5"/>
+        <input type="hidden" name="task_status" id="task_status" value="0"/>
+
+    </div>
+</div>
