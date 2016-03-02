@@ -61,13 +61,6 @@ module.exports = {
                 'src/sass/catApp/**/*.scss'
             ],
             name: 'catApp'
-        },
-        gulpTestModule:{
-            js:[
-                jsSrcPath + 'testGulpModule/**/*.js'
-            ],
-            styles:[],
-            name:'gulpTest'
         }
     }
 };
