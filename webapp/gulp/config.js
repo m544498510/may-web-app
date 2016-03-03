@@ -6,7 +6,7 @@
 
 //根目录为webWorkSpace
 var appPath = '../webapp/';
-var jsSrcPath = './src/js/';
+var moduleSrcPath = './src/modules/';
 var styleSrc = './src/sass';
 var distPath = appPath+'dist/';
 
@@ -15,16 +15,15 @@ module.exports = {
         src: './src/',
         dist: distPath,
 
-        scriptSrc: jsSrcPath + '**/*.js',
+        scriptSrc: moduleSrcPath + '**/*.js',
         scriptDist: distPath + 'js/',
 
         styleSrc: styleSrc + '**/*.scss',
         styleDist: distPath + 'css/',
 
         htmlSrc: [
-            './src/html/pages/**/*.*',
-            './src/html/jsp/**/*.*',
-            './src/js/**/*.html'
+            './src/modules/**/*.html',
+            './src/modules/**/*.jsp'
         ],
         htmlDist: distPath + 'html',
 
@@ -45,26 +44,14 @@ module.exports = {
         appNames: ['managerApp'],
         managerApp: {
             js: [
-                jsSrcPath + 'managerModules/**/*.js',
-                jsSrcPath + 'commonModules/**/*.js'
+                moduleSrcPath + 'managerApp/**/*.js',
+                moduleSrcPath + 'common/**/*.js'
             ],
             styles: [
-                styleSrc + '/managerApp/**/*.scss'
-            ],
-            view: [
-                appPath + 'WEB-INF/newJsp/task/mytask.jsp'
+                moduleSrcPath + '/managerApp/**/*.scss',
+                moduleSrcPath + 'common/**/*.scss'
             ],
             name: 'managerApp'
-        },
-        catApp: {
-            js: [
-                jsSrcPath + 'catModules/**/*.js',
-                jsSrcPath + 'commonModules/**/*.js'
-            ],
-            styles: [
-                'src/sass/catApp/**/*.scss'
-            ],
-            name: 'catApp'
         }
     }
 };

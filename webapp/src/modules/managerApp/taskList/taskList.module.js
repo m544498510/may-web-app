@@ -7,7 +7,6 @@
 
     angular
         .module('taskListModule', [
-            'utilsModule',
             'taskListDataServiceModule',
             'jqPagnationModule'
         ]);

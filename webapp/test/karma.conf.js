@@ -18,13 +18,13 @@ module.exports = function (config) {
             'src/lib/angular-mocks/angular-mocks.js',
 
             //clinet js
-            'src/js/**/*.app.js',
-            'src/js/**/*.module.js',
-            'src/js/**/*.dataService.js',
-            'src/js/**/*.directive.js',
-            'src/js/**/*.controller.js',
-            'src/js/**/*.service.js',
-            'src/js/**/*.js',
+            'src/modules/**/*.app.js',
+            'src/modules/**/*.module.js',
+            'src/modules/**/*.dataService.js',
+            'src/modules/**/*.directive.js',
+            'src/modules/**/*.controller.js',
+            'src/modules/**/*.service.js',
+            'src/modules/**/*.js',
 
 
             //test js
