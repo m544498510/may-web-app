@@ -8,10 +8,10 @@
         .module('taskListModule')
         .controller('taskListController', taskListController);
 
-    taskListController.$inject = ['taskListDataService','taskListService'];
+    taskListController.$inject = ['taskListDataService','taskListService','$rootScope'];
 
     /* @ngInject */
-    function taskListController(taskListDataService,taskListService) {
+    function taskListController(taskListDataService,taskListService,$rootScope) {
         /* jshint validthis: true */
         var vm = this;
         vm.pagnationConfig = {
@@ -31,6 +31,7 @@
 
         function activate() {
             getAvengers();
+            var title = "我的任务";
             return true;
         }
 

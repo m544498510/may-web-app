@@ -6,10 +6,21 @@
 
     angular
         .module('managerApp', [
-            'taskListModule',
-            'utilsModule',
-            'ui.router'
+            'ui.router',
 
+            'utilsModule',
+            'taskListDataServiceModule',
+            'jqPagnationModule',
+
+            'taskListModule'
         ])
+        .run(['$rootScope', '$state', '$stateParams',
+                function ($rootScope,   $state,   $stateParams) {
+
+                    $rootScope.$state = $state;
+                    $rootScope.$stateParams = $stateParams;
+                }
+            ]
+        )
 
 })();

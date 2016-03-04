@@ -5,12 +5,13 @@
         + request.getServerName() + ":" + request.getServerPort()
         + path + "/";
 
-%><!DOCTYPE html>
-<html class="no-js">
-<head>
+%>
+<!DOCTYPE html>
+<html class="no-js" ng-app="managerApp">
+<head >
     <meta charset="UTF-8">
     <base href="../">
-    <title>我的任务-译马网</title>
+    <title ng-bind="$state.current.title">test</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;url=<%=basePath%>/sorry-for-ie.html"/>
@@ -37,7 +38,7 @@
     <link rel="stylesheet" href="<%=basePath%>static/global/plugins/Mricode.Pagination/mricode.pagination.css">
 
 </head>
-<body class="page-header-fixed" ng-app="managerApp">
+<body class="page-header-fixed" >
     <!-- BEGIN HEADER -->
     <jsp:include page="${basePath }/frame/top.do"></jsp:include>
     <!-- END HEADER -->
@@ -106,17 +107,17 @@
     <script src="./dist/js/managerApp.js"></script>
 
 <%--
-    <script src="./dist/js/managerApp/taskList/taskList.module.js"></script>
+    <script src="./dist/js/managerApp/task/taskList/taskList.module.js"></script>
     <script src="./dist/js/managerApp/app/manager.app.js"></script>
     <script src="./dist/js/common/utils/utils.module.js"></script>
     <script src="./dist/js/managerApp/dataServices/taskList.dataService.js"></script>
-    <script src="./dist/js/managerApp/pagnation/pagnation.module.js"></script>
+    <script src="./dist/js/managerApp/jqPagnation/jqPagnation.module.js"></script>
 
 
 
-    <script src="./dist/js/managerApp/taskList/taskList.controller.js"></script>
-    <script src="./dist/js/managerApp/taskList/taskList.service.js"></script>
-    <script src="./dist/js/managerApp/taskList/taskList.route.js"></script>
+    <script src="./dist/js/managerApp/task/taskList/taskList.controller.js"></script>
+    <script src="./dist/js/managerApp/task/taskList/taskList.service.js"></script>
+    <script src="./dist/js/managerApp/task/taskList/taskList.route.js"></script>
 --%>
 
 </body>

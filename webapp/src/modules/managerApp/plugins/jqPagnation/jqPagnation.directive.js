@@ -6,8 +6,7 @@
     'use strict';
 
     angular
-        .module('jqPagnationModule', ['utilsModule'])
-        .constant('jqPagenationConf', getConfig())
+        .module('jqPagnationModule')
         .directive('jqPagnation', pagnation);
 
     pagnation.$inject = ['commonUtils', 'jqPagenationConf'];
@@ -51,20 +50,5 @@
             }
         }
     }
-
-    function getConfig() {
-        return {
-            pageBtnCount: 9,
-            pageSize: 5,
-            total: 10,
-            debug: false,
-            showJump: true,
-            jumpBtnText: "跳转",
-            firstBtnText: "首页",
-            lastBtnText: "尾页"
-        };
-    }
-
-
 })();
 

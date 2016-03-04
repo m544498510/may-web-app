@@ -16,7 +16,13 @@
         $stateProvider
             .state('myTask', {
                 url:'/myTask',
-                templateUrl: './dist/html/managerApp/taskList/taskList.view.html'
+                title:'my task',
+                templateUrl: './dist/html/managerApp/task/taskList/taskList.view.html'
+            })
+            .state('state', {
+                url: '/a',
+                template: 'test a',
+                title:'test page'
             });
 
         $urlRouterProvider.otherwise('/myTask');
