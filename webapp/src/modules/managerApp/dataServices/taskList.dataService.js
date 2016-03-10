@@ -5,7 +5,7 @@
     'use strict';
 
     angular
-        .module('taskListDataServiceModule',[])
+        .module('managerDataServiceModule')
         .factory('taskListDataService', taskListDataService);
 
     taskListDataService.$inject = ['$http'];

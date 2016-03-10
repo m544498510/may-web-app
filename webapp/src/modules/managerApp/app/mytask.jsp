@@ -101,8 +101,11 @@
     <script src="<%=basePath%>static/layout/scripts/utils.js"></script>
     <script src="<%=basePath%>static/global/plugins/Mricode.Pagination/mricode.pagination.js"></script>
 
-    <script src="./dist/lib/angular/angular.min.js"></script>
+    <script src="./dist/lib/angular/angular.js"></script>
     <script src="./dist/lib/angular/angular-ui-router.min.js"></script>
+    <script src="./dist/lib/angular/angular-translate.min.js"></script>
+    <script src="./dist/lib/angular/angular-cookies.min.js"></script>
+
 
     <script src="./dist/js/managerApp.js"></script>
 

@@ -37,6 +37,8 @@ module.exports = {
 
         rev: './src/revInfo/',
 
+        translateJson: './src/translate/**/*.json',
+        translateDist: distPath + 'translate/',
         oldSass: appPath + 'static/pages/css/'
     },
 

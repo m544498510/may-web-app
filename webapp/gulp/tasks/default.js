@@ -12,9 +12,9 @@ gulp.task('default', function () {
     var type = gutils.env.production ? 'production' : 'development';
 
     if (type == "development") {
-        runSequence(['hintJs', 'clean'], ['buildJs', 'buildStyle', 'buildHtml', 'moveImg'], 'complete');
+        runSequence(['hintJs', 'clean'], ['buildJs', 'buildStyle', 'buildHtml', 'moveImg','moveTranslate'], 'complete');
     } else if (type == "production") {
-        runSequence(['clean','unitTest'], ['buildJs:production', 'buildStyle:production', 'imgMin'], 'buildHtml:production', 'complete');
+        runSequence(['clean','unitTest'], ['buildJs:production', 'buildStyle:production', 'imgMin','moveTranslate'], 'buildHtml:production', 'complete');
     } else {
         gutils.log(gutils.colors.green('////////////////////////////////////'));
         gutils.log(gutils.colors.green('///                              ///'));

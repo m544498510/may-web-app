@@ -6,10 +6,12 @@
 
     angular
         .module('managerApp', [
-            'ui.router',
+            'ui.router',                //路由
+            'pascalprecht.translate',   //18n
+            'ngCookies',                //cookies
 
             'utilsModule',
-            'taskListDataServiceModule',
+            'managerDataServiceModule',
             'jqPagnationModule',
 
             'taskListModule'
@@ -22,5 +24,12 @@
                 }
             ]
         )
+        .config(function($translateProvider) {
+            $translateProvider
+                .useStaticFilesLoader({
+                    prefix: './dist/18n',
+                    suffix: '.json'
+                });
+        });
 
 })();
