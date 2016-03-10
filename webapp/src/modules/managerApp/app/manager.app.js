@@ -8,7 +8,6 @@
         .module('managerApp', [
             'ui.router',                //路由
             'pascalprecht.translate',   //18n
-            'ngCookies',                //cookies
 
             'utilsModule',
             'managerDataServiceModule',
@@ -29,7 +28,8 @@
                 .useStaticFilesLoader({
                     prefix: './dist/18n',
                     suffix: '.json'
-                });
+                })
+                .preferredLanguage('zh_cn');
         });
 
 })();
