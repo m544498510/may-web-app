@@ -3,7 +3,7 @@
 describe('Controller: taskListCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('taskListModule'));
+    beforeEach(module('managerApp'));
 
     var taskListCtrl,
         scope;

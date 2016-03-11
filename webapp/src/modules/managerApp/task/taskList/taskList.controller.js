@@ -8,10 +8,10 @@
         .module('taskListModule')
         .controller('taskListController', taskListController);
 
-    taskListController.$inject = ['taskListDataService','taskListService','$rootScope'];
+    taskListController.$inject = ['taskListDataService','taskListService','$translate'];
 
     /* @ngInject */
-    function taskListController(taskListDataService,taskListService,$rootScope) {
+    function taskListController(taskListDataService,taskListService,$translate) {
         /* jshint validthis: true */
         var vm = this;
         vm.pagnationConfig = {
@@ -24,10 +24,14 @@
 
         vm.title = 'taskListController';
         vm.reverse = reverse;
+        vm.changeLang = changeLang;
         activate();
 
         ////////////////
 
+        function changeLang(key){
+            $translate.use(key);
+        }
 
         function activate() {
             getAvengers();

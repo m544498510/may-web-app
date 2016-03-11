@@ -12,7 +12,9 @@
     "angular-ui-router": "^0.2.18",
     "angular-translate": "^2.10.0",
     "jquery": "^2.2.1",
-    "angular-translate-loader-url": "^2.10.0"
+    "angular-translate-loader-url": "^2.10.0",
+    "angular-translate-loader-static-files": "^2.10.0",
+    "angular-translate-storage-local": "^2.10.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

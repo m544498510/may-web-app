@@ -102,27 +102,17 @@
     <script src="<%=basePath%>static/global/plugins/Mricode.Pagination/mricode.pagination.js"></script>
 
     <script src="./dist/lib/angular/angular.js"></script>
-    <script src="./dist/lib/angular-ui-router/angular-ui-router.min.js"></script>
+    <script src="./dist/lib/angular-cookies/angular-cookies.min.js"></script>
+    <script src="./dist/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="./dist/lib/angular-translate/angular-translate.min.js"></script>
     <script src="./dist/lib/angular-translate-loader-url/angular-translate-loader-url.min.js"></script>
     <script src="./dist/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="./dist/lib/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+    <script src="./dist/lib/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
 
 
     <script src="./dist/js/managerApp.js"></script>
 
-<%--
-    <script src="./dist/js/managerApp/task/taskList/taskList.module.js"></script>
-    <script src="./dist/js/managerApp/app/manager.app.js"></script>
-    <script src="./dist/js/common/utils/utils.module.js"></script>
-    <script src="./dist/js/managerApp/dataServices/taskList.dataService.js"></script>
-    <script src="./dist/js/managerApp/jqPagnation/jqPagnation.module.js"></script>
-
-
-
-    <script src="./dist/js/managerApp/task/taskList/taskList.controller.js"></script>
-    <script src="./dist/js/managerApp/task/taskList/taskList.service.js"></script>
-    <script src="./dist/js/managerApp/task/taskList/taskList.route.js"></script>
---%>
 
 </body>
 </html>

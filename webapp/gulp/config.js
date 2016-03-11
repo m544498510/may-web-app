@@ -41,7 +41,7 @@ module.exports = {
         imageDist: distPath + 'img/',
 
 
-        translateJson: './src/translate/**/*.json',
+        translateJson: './src/translate/**/*.jsonData',
         translateDist: distPath + 'translate/',
 
         oldSass: appPath + 'static/pages/css/'

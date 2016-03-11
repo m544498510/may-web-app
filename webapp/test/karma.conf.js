@@ -16,6 +16,12 @@ module.exports = function (config) {
             //bower js
             'src/lib/angular/angular.js',
             'src/lib/angular-mocks/angular-mocks.js',
+            'src/lib/angular-ui-router/release/angular-ui-router.js',
+            'src/lib/angular-translate/angular-translate.js',
+            'src/lib/angular-cookies/angular-cookies.js',
+            'src/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+            'src/lib/angular-translate-storage-local/angular-translate-storage-local.js',
+            'src/lib/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
 
             //clinet js
             'src/modules/**/*.app.js',

@@ -1,4 +1,4 @@
-<div class="mypro-prolist-view">
+<div class="mypro-prolist-view" ng-controller="taskListController as taskListCtrl">
     <!-- 页面帮助 start -->
     <div class="help">
         <i class="page-help-icon"></i>
@@ -55,7 +55,10 @@
     </div>
     <!-- end 页面帮助 -->
 
-    <div class="mypro-tasklist-view" ng-controller="taskListController as taskListCtrl">
+    <button class="button left" ng-click="taskListCtrl.changeLang('zh_cn')">中文</button>
+    <button class="button left" ng-click="taskListCtrl.changeLang('en')">English</button>
+
+    <div class="mypro-tasklist-view" >
         <ul class="display-table task-head">
             <li class="task-comp" style='text-align:left;width: 10%' translate="teamName"></li>
             <li style='text-align:left;width: 10%;' translate="projectName">所属项目</li>

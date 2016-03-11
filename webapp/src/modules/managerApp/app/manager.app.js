@@ -6,6 +6,7 @@
 
     angular
         .module('managerApp', [
+            'ngCookies',
             'ui.router',                //路由
             'pascalprecht.translate',   //18n
 
@@ -26,10 +27,11 @@
         .config(function($translateProvider) {
             $translateProvider
                 .useStaticFilesLoader({
-                    prefix: './dist/18n',
-                    suffix: '.json'
+                    prefix: './dist/translate/i18n/',
+                    suffix: '.jsonData'
                 })
-                .preferredLanguage('zh_cn');
+                .preferredLanguage('zh_cn')
+                .fallbackLanguage(['en']).useLocalStorage();
         });
 
 })();
