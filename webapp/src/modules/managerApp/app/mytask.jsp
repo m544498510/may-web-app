@@ -102,9 +102,10 @@
     <script src="<%=basePath%>static/global/plugins/Mricode.Pagination/mricode.pagination.js"></script>
 
     <script src="./dist/lib/angular/angular.js"></script>
-    <script src="./dist/lib/angular/angular-ui-router.min.js"></script>
-    <script src="./dist/lib/angular/angular-translate.min.js"></script>    <script src="./dist/lib/angular/angular-translate.min.js"></script>
-    <script src="./dist/lib/angular/angular-translate-loader-static-files.min.js"></script>
+    <script src="./dist/lib/angular-ui-router/angular-ui-router.min.js"></script>
+    <script src="./dist/lib/angular-translate/angular-translate.min.js"></script>
+    <script src="./dist/lib/angular-translate-loader-url/angular-translate-loader-url.min.js"></script>
+    <script src="./dist/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
 
 
     <script src="./dist/js/managerApp.js"></script>

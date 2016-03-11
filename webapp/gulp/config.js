@@ -8,12 +8,17 @@
 var appPath = '../webapp/';
 var moduleSrcPath = './src/modules/';
 var styleSrc = './src/sass';
+var srcPath = './src/';
 var distPath = appPath+'dist/';
 
 module.exports = {
     paths: {
-        src: './src/',
-        dist: distPath,
+        src:    srcPath,
+        dist:   distPath,
+        rev:    srcPath + 'revInfo/',
+
+        libSrc: srcPath + 'lib/**/*.*',
+        libDist: distPath + 'lib/',
 
         scriptSrc: moduleSrcPath + '**/*.js',
         scriptDist: distPath + 'js/',
@@ -35,10 +40,10 @@ module.exports = {
 //        ],
         imageDist: distPath + 'img/',
 
-        rev: './src/revInfo/',
 
         translateJson: './src/translate/**/*.json',
         translateDist: distPath + 'translate/',
+
         oldSass: appPath + 'static/pages/css/'
     },
 
@@ -52,6 +57,9 @@ module.exports = {
             styles: [
                 moduleSrcPath + '/managerApp/**/*.scss',
                 moduleSrcPath + 'common/**/*.scss'
+            ],
+            libs: [
+
             ],
             name: 'managerApp'
         }

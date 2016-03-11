@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var stylish = require('jshint-stylish');
 
-gulp.task("minHtml",function(){
+gulp.task("min:html",function(){
   gulp.src("../webapp/WEB-INF/newJsp/**/*.*")
     .pipe($.minifyHtml({
       empty: true,

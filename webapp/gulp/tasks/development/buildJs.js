@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var config = require('./../../config.js');
 
-gulp.task('buildJs', function () {
+gulp.task('build:js', function () {
     var result, appConfig,
         appNames = config.apps.appNames;
 

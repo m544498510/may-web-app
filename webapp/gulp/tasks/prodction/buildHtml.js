@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var config = require('./../../config.js');
 
-gulp.task("buildHtml:production",function(){
+gulp.task("build:html--production",function(){
     var paths = config.paths.htmlSrc;
     if( typeof paths != 'string'){
         paths.push(config.paths.rev + "**/*.json");

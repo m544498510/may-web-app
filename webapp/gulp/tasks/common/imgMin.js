@@ -8,7 +8,7 @@ var config = require('./../../config.js');
 /*
  * 删除图片无关信息
  */
-gulp.task('imgMin', function () {
+gulp.task('min:img', function () {
     return gulp.src(config.paths.imageSrc)
         .pipe($.size())
         .pipe($.imagemin({
