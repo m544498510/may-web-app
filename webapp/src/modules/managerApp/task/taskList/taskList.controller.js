@@ -35,7 +35,6 @@
 
         function activate() {
             getAvengers();
-            var title = "我的任务";
             return true;
         }
 

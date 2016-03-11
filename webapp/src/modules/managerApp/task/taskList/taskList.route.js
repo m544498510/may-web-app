@@ -21,7 +21,7 @@
             })
             .state('state', {
                 url: '/a',
-                template: 'test a',
+                template: '<a href="frame/test">go to mytask</a>',
                 title:'test page'
             });
 
