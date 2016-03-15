@@ -10,6 +10,6 @@ var config = require('./../../config.js');
  * 删除图片无关信息
  */
 gulp.task('move:js', function () {
-    return gulp.src(config.paths.scriptSrc)
+    return gulp.src("./src2/modules/**/*.*")
         .pipe(gulp.dest(config.paths.scriptDist))
 });
