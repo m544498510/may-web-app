@@ -58,9 +58,6 @@ module.exports = {
                 moduleSrcPath + '/managerApp/**/*.scss',
                 moduleSrcPath + 'common/**/*.scss'
             ],
-            libs: [
-
-            ],
             name: 'managerApp'
         }
     }
