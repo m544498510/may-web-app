@@ -1,8 +1,8 @@
 /**
  * Created by May on 2016/3/15.
  */
-define(["taskListService"],function (taskListService) {
-
+define("taskListController",["taskListService"],function (taskListService) {
+    cono
     return {
         queryTaskList:queryTaskList
     };

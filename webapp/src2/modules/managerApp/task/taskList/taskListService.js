@@ -1,7 +1,7 @@
 /**
  * Created by May on 2016/3/15.
  */
-define(["taskListDataService"],function (taskListDS) {
+define("taskListService",["taskListDataService"],function (taskListDS) {
     return {
         queryTaskList: queryTaskList
     };

@@ -6,7 +6,7 @@
 
 //根目录为webWorkSpace
 var appPath = '../webapp/';
-var moduleSrcPath = './src/modules/';
+var moduleSrcPath = './src2/modules/';
 var styleSrc = './src/sass';
 var srcPath = './src/';
 var distPath = appPath+'dist/';
@@ -30,7 +30,6 @@ module.exports = {
             './src/modules/**/*.html',
             './src/modules/**/*.jsp',
             './src2/**/*.html'
-
         ],
         htmlDist: distPath + 'html',
 
@@ -50,8 +49,8 @@ module.exports = {
     },
 
     apps: {
-        appNames: ['managerApp'],
-        managerApp: {
+        appNames: ['testApp'],
+        testApp: {
             js: [
                 moduleSrcPath + 'managerApp/**/*.js',
                 moduleSrcPath + 'common/**/*.js'
@@ -60,7 +59,7 @@ module.exports = {
                 moduleSrcPath + '/managerApp/**/*.scss',
                 moduleSrcPath + 'common/**/*.scss'
             ],
-            name: 'managerApp'
+            name: 'testApp'
         }
     }
 };

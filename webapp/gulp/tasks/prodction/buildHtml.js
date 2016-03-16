@@ -18,5 +18,6 @@ gulp.task("build:html--production",function(){
         .pipe($.include())
             .on('error',console.log)
         .pipe($.revCollector())
+        .pipe($.size())
         .pipe(gulp.dest(config.paths.htmlDist));
 });
