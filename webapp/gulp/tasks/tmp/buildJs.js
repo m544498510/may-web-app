@@ -14,6 +14,7 @@ gulp.task('build:rjs',function(){
         appConfig = config.apps[appNames[i]];
         result = gulp.src(appConfig.js)
             .pipe(mainFilter)
+            .pipe($.uglify())
             .pipe($.rev())
             .pipe(gulp.dest(config.paths.scriptDist))
             .pipe($.rev.manifest({

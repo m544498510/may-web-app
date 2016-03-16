@@ -18,6 +18,7 @@ gulp.task('build:style--production',function(){
         .pipe($.rev())
         .pipe(gulp.dest(config.paths.styleDist+appConfig.name+'/'))
         .pipe($.rev.manifest({
+            base:config.paths.rev,
             merge: true
         }))
         .pipe(gulp.dest(config.paths.rev))

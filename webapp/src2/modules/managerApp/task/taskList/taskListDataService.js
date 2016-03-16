@@ -8,7 +8,7 @@ define("taskListDataService",["jquery"],function ($) {
 
     function get(cb){
         $.ajax({
-            url:"/task/getTask?task_status=0&pagesize=5&pagenum=1",
+            url:"/task/getTask.json?task_status=0&pagesize=5&pagenum=1",
             success:function(result){
                 console.log(result);
                 cb(result);

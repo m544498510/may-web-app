@@ -19,7 +19,7 @@
         .run(['$rootScope', '$state', '$stateParams',
                 function ($rootScope,   $state,   $stateParams) {
 
-                    $rootScope.$state = $state;
+                    $rootScope.$statemxl = $state;
                     $rootScope.$stateParams = $stateParams;
                 }
             ]
@@ -32,6 +32,7 @@
                 })
                 .preferredLanguage('zh_cn')
                 .fallbackLanguage(['en']).useLocalStorage();
+            var a = "mx";
         });
 
 })();
