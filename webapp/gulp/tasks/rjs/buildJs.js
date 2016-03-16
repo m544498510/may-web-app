@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var config = require('./../../config2.js');
 
-gulp.task('build:rjs',function(){
+gulp.task('build:rjs--production',function(){
     var result,appConfig,
         mainFilter = $.filter("**/*.main.js",{restore:true}),
         nMainFilter = $.filter(['**/*.js', '!**/*.main.js'],{restore:true}),
