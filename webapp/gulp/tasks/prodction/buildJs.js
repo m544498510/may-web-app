@@ -20,9 +20,10 @@ gulp.task('build:js--production',function(){
             .pipe(gulp.dest(config.paths.scriptDist))
             .pipe($.size())
             .pipe($.rev.manifest({
+                path:config.paths.rev+"rev-manifest.json",
                 merge: true
             }))
-            .pipe(gulp.dest(config.paths.rev))
+            .pipe(gulp.dest("./"))
 
     }
     return result;

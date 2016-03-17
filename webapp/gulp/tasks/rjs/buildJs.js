@@ -18,9 +18,10 @@ gulp.task('build:rjs--production',function(){
             .pipe($.rev())
             .pipe(gulp.dest(config.paths.scriptDist))
             .pipe($.rev.manifest({
+                path:config.paths.rev+"rev-manifest.json",
                 merge: true
             }))
-            .pipe(gulp.dest(config.paths.rev))
+            .pipe(gulp.dest("./"))
             .pipe(mainFilter.restore())
 
             .pipe(nMainFilter)
@@ -29,10 +30,10 @@ gulp.task('build:rjs--production',function(){
             .pipe($.rev())
             .pipe(gulp.dest(config.paths.scriptDist))
             .pipe($.rev.manifest({
-                base :config.paths.rev,
+                path:config.paths.rev+"rev-manifest.json",
                 merge: true
             }))
-            .pipe(gulp.dest(config.paths.rev));
+            .pipe(gulp.dest("./"));
 
     }
     return result;

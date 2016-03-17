@@ -18,10 +18,10 @@ gulp.task('build:style--production',function(){
         .pipe($.rev())
         .pipe(gulp.dest(config.paths.styleDist+appConfig.name+'/'))
         .pipe($.rev.manifest({
-            base:config.paths.rev,
+            path:config.paths.rev+"rev-manifest.json",
             merge: true
         }))
-        .pipe(gulp.dest(config.paths.rev))
+        .pipe(gulp.dest("./"))
 
   }
   return result;

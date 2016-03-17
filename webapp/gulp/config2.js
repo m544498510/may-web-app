@@ -15,7 +15,7 @@ module.exports = {
     paths: {
         src:    srcPath,
         dist:   distPath,
-        rev:    srcPath + 'revInfo/',
+        rev:   "src/revInfo/",
 
         libSrc: srcPath + 'lib/**/*.*',
         libDist: distPath + 'lib/',
