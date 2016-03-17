@@ -29,7 +29,7 @@ module.exports = {
         htmlSrc: [
             './src/modules/**/*.html',
             './src/modules/**/*.jsp',
-            './src2/**/*.html'
+            './src2/**/*.jsp'
 
         ],
         htmlDist: distPath + 'html',

@@ -21,7 +21,11 @@ gulp.task('build:rjs',function(){
             .pipe(mainFilter.restore())
 
             .pipe(nMainFilter)
+            .pipe($.sourcemaps.init({
+                loadMaps:true
+            }))
             .pipe($.concat(appNames[i]+'.js'))
+            .pipe($.sourcemaps.write())
             .pipe(gulp.dest(config.paths.scriptDist))
 
     }

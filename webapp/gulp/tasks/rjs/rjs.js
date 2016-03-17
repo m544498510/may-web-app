@@ -15,15 +15,9 @@ gulp.task('rjs', function () {
     var type = gutils.env.production ? 'production' : 'development';
 
     if (type == "development") {
-        runSequence('clean:scripts',['build:rjs','build:html']);
+        runSequence('clean:html',['build:rjs','build:html']);
     } else if (type == "production") {
-        runSequence('clean:scripts',['build:rjs--production','build:html--production']);
-    } else {
-        gutils.log(gutils.colors.green('////////////////////////////////////'));
-        gutils.log(gutils.colors.green('///                              ///'));
-        gutils.log(gutils.colors.green('///   unknown development type   ///'));
-        gutils.log(gutils.colors.green('///                              ///'));
-        gutils.log(gutils.colors.green('////////////////////////////////////'));
+        runSequence('clean:html',['build:rjs--production','build:html--production']);
     }
 
 });
