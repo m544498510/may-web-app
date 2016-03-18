@@ -4,6 +4,7 @@
 define('msgManager',function () {
     var msgMap = {};
     return {
+        sendMsg:sendMsg,
         broadcastMsg:broadcastMsg,
         addMsgListener : addMsgListener,
         removeMsgListener : removeMsgListener
@@ -11,10 +12,10 @@ define('msgManager',function () {
 
     function broadcastMsg(msgId,msgData){
         var callback,
-            listenerList = msgMap[msgId];
-        if(listenerList){
-            for (var i = 0; i < listenerList.length; i++) {
-                callback = listenerList[i].callback;
+            listenerMap = msgMap[msgId];
+        if(listenerMap){
+            for (var key in listenerMap) {
+                callback = listenerMap[key].callback;
                 if(callback && typeof callback === "function"){
                     callback(msgData);
                 }
@@ -22,27 +23,36 @@ define('msgManager',function () {
         }
     }
 
-    function addMsgListener(msgId,listenerId,callback){
-        var listenerList = msgMap[msgId];
-        if(!listenerList){
-            listenerList = [];
-            msgMap[msgId] = listenerList;
+    function sendMsg(msgId,msgData,targetIds){
+        var listenerMap = msgMap[msgId];
+        if(listenerMap){
+            for (var i = 0; i < targetIds.length; i++) {
+                var target = listenerMap[targetIds[i]];
+                if(target && target.callback
+                        && typeof target.callback === "function") {
+
+                    target.callback(msgData);
+                }
+            }
         }
-        listenerList.push({
+    }
+
+    function addMsgListener(msgId,listenerId,callback){
+        var listenerMap = msgMap[msgId];
+        if(!listenerMap){
+            listenerMap = {};
+            msgMap[msgId] = listenerMap;
+        }
+        listenerMap[listenerId] = {
             id: listenerId,
             callback:callback
-        });
+        };
     }
 
     function removeMsgListener(msgId,listenerId){
-        var listenerList = msgMap[msgId];
-        if(listenerList){
-            for (var i = 0; i < listenerList.length; i++) {
-                if(listenerList[i].id === listenerId){
-                    listenerList.splice(i,1);
-                    break;
-                }
-            }
+        var listenerMap = msgMap[msgId];
+        if(listenerMap){
+            delete listenerMap[listenerId];
         }
     }
 

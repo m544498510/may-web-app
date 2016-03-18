@@ -11,6 +11,7 @@ requirejs.config({
     }
 });
 
-define(["taskListController"],function (a) {
+define(["taskListViewModule","testController"],function (a,b) {
     a.init();
+    b.init();
 });

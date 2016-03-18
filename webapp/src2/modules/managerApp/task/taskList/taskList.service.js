@@ -1,32 +1,20 @@
 /**
  * Created by May on 2016/3/15.
  */
-define("taskListService",["taskListDataService"],function (taskListDS) {
-    var taskTypeMap = {
-        '1': {
-            typeName: '翻译',
-            buttonVal: '去翻译',
-            typeClass: 'task-trans'
-        },
-        '2': {
-            typeName: '编辑',
-            buttonVal: '去编辑',
-            typeClass: 'tansk-edit'
-        },
-        '3': {
-            typeName: '校对',
-            buttonVal: '去校对',
-            typeClass: 'tansk-collate'
-        }
-    };
+define("taskListService",["msgManager","taskListDataService"],function (msgManager,taskListDS) {
+    var taskList,
+        taskTypeMap = getTaskTypeMap();
 
     return {
         queryTaskList: queryTaskList
     };
 
-    function queryTaskList(cb){
+    function queryTaskList(){
         taskListDS.get(function(data){
-            cb(initTaskList(data.result));
+            taskList = initTaskList(data.result);
+     //       msgManager.broadcastMsg("taskListChange",taskList);
+
+            msgManager.sendMsg("taskListChange",taskList,"taskListViewModule");
         });
     }
 
@@ -60,6 +48,26 @@ define("taskListService",["taskListDataService"],function (taskListDS) {
             target[key] = source[key];
         }
         return target;
+    }
+
+    function getTaskTypeMap (){
+        return {
+            '1': {
+                typeName: '翻译',
+                buttonVal: '去翻译',
+                typeClass: 'task-trans'
+            },
+            '2': {
+                typeName: '编辑',
+                buttonVal: '去编辑',
+                typeClass: 'tansk-edit'
+            },
+            '3': {
+                typeName: '校对',
+                buttonVal: '去校对',
+                typeClass: 'tansk-collate'
+            }
+        };
     }
 
 });
