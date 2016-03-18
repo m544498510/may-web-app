@@ -16,7 +16,8 @@
     "angular-translate-loader-static-files": "^2.10.0",
     "angular-translate-storage-local": "^2.10.0",
     "requirejs": "^2.1.22",
-    "artTemplate": "^3.0.1"
+    "artTemplate": "^3.0.1",
+    "stateman": "^0.2.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
