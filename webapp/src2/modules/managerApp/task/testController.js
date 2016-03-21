@@ -9,6 +9,10 @@ define("testController",["jquery","artTemplate","msgManager","taskListService"],
     };
 
     function init(){
+        var str = '<h1>router test</h1>';
+        str += '<div id="routerTest"></div>';
+        str += '<a href="frame/test1#/myTask">go to myTask</a>';
+        $('#taskListContainer').html(str);
         registerListener();
     }
 

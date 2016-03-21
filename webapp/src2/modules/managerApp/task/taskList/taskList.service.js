@@ -12,9 +12,9 @@ define("taskListService",["msgManager","taskListDataService"],function (msgManag
     function queryTaskList(){
         taskListDS.get(function(data){
             taskList = initTaskList(data.result);
-     //       msgManager.broadcastMsg("taskListChange",taskList);
+            msgManager.broadcastMsg("taskListChange",taskList);
 
-            msgManager.sendMsg("taskListChange",taskList,"taskListViewModule");
+     //       msgManager.sendMsg("taskListChange",taskList,["taskListViewModule"]);
         });
     }
 
