@@ -27,12 +27,11 @@
         .config(function($translateProvider) {
             $translateProvider
                 .useStaticFilesLoader({
-                    prefix: './dist/translate/i18n/',
+                    prefix: './dist/nls/i18n/',
                     suffix: '.jsonData'
                 })
                 .preferredLanguage('zh_cn')
                 .fallbackLanguage(['en']).useLocalStorage();
-            var a = "mx";
         });
 
 })();
