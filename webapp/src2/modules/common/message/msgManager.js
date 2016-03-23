@@ -1,7 +1,7 @@
 /**
  * Created by May on 2016/3/17.
  */
-define('msgManager',function () {
+define(function () {
     var msgMap = {};
     return {
         sendMsg:sendMsg,

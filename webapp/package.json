@@ -39,6 +39,7 @@
     "karma-firefox-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.7",
     "karma-phantomjs-launcher": "^1.0.0",
+    "karma-requirejs": "^0.2.6",
     "lazypipe": "^0.2.4",
     "minimist": "0.0.8",
     "open": "^0.0.5",
@@ -51,5 +52,8 @@
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "karma-requirejs": "^0.2.6"
   }
 }

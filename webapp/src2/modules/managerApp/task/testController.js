@@ -1,12 +1,17 @@
 /**
  * Created by May on 2016/3/15.
  */
-define("testController",["jquery","artTemplate","msgManager","taskListService"],function ($,artTemplate,msgManager,taskListService) {
+define(["jquery","artTemplate","../../common/message/msgManager","./taskList/taskListService"],function ($,artTemplate,msgManager,taskListService) {
     var name = "testController";
     return {
         name:name,
-        init:init
+        init:init,
+        add:add
     };
+
+    function add(a,b){
+        return a+b;
+    }
 
     function init(){
         var str = '<h1>router test</h1>';
