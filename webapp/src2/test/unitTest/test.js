@@ -1,7 +1,7 @@
 /**
  * Created by Mei Xinlin on 2016/3/22.
  */
-define([ 'jquery','testController'], function($,a) {
+define([ 'jquery','managerApp/task/testController'], function($,a) {
 
     describe('test test', function() {
 

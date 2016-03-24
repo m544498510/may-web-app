@@ -2,7 +2,7 @@
  * Created by May on 2016/3/15.
  */
 requirejs.config({
-    baseUrl: './src2/modules/',
+    baseUrl: './dist/js/',
     paths: {
         'jquery':'../lib/jquery/dist/jquery.min',
         'artTemplate':'../lib/artTemplate/dist/template',
@@ -12,7 +12,7 @@ requirejs.config({
     }
 });
 
-define(['StateMan','task/taskList/taskListViewModule','task/testController'],function (StateMan,taskListViewModule,testController) {
+requirejs(['StateMan','managerApp/task/taskList/taskListViewModule','managerApp/task/testController'],function (StateMan,taskListViewModule,testController) {
 
     var stateman = new StateMan();
 

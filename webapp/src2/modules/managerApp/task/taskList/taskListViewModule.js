@@ -1,7 +1,7 @@
 /**
  * Created by May on 2016/3/15.
  */
-define(["jquery","artTemplate","../../../common/message/msgManager","./taskListService"],function ($,artTemplate,msgManager,taskListService) {
+define(["jquery","artTemplate","common/message/msgManager","./taskListService"],function ($,artTemplate,msgManager,taskListService) {
     var name = "taskListViewModule";
     return {
         name:name,

@@ -1,7 +1,7 @@
 /**
  * Created by May on 2016/3/15.
  */
-define(["../../../common/message/msgManager","./taskListDataService"],
+define(["common/message/msgManager","./taskListDataService"],
     function (msgManager, taskListDS) {
         var taskList,
             taskTypeMap = getTaskTypeMap();

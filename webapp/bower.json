@@ -1,35 +1,35 @@
 {
-  "name": "may",
-  "version": "0.0.0",
-  "dependencies": {
-    "angular": "^1.4.0",
-    "bootstrap": "^3.2.0",
-    "angular-animate": "^1.4.0",
-    "angular-cookies": "^1.4.0",
-    "angular-resource": "^1.4.0",
-    "angular-route": "^1.4.0",
-    "angular-sanitize": "^1.4.0",
-    "angular-ui-router": "^0.2.18",
-    "angular-translate": "^2.10.0",
-    "jquery": "^2.2.1",
-    "angular-translate-loader-url": "^2.10.0",
-    "angular-translate-loader-static-files": "^2.10.0",
-    "angular-translate-storage-local": "^2.10.0",
-    "requirejs": "^2.1.22",
-    "artTemplate": "^3.0.1",
-    "stateman": "^0.2.0"
-  },
-  "devDependencies": {
-    "angular-mocks": "^1.4.0"
-  },
-  "moduleName": "mayApp",
-  "overrides": {
-    "bootstrap": {
-      "main": [
-        "less/bootstrap.less",
-        "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
-      ]
+    "name": "may",
+    "version": "0.0.0",
+    "dependencies": {
+        "angular": "^1.4.0",
+        "bootstrap": "^3.2.0",
+        "angular-animate": "^1.4.0",
+        "angular-cookies": "^1.4.0",
+        "angular-resource": "^1.4.0",
+        "angular-route": "^1.4.0",
+        "angular-sanitize": "^1.4.0",
+        "angular-ui-router": "^0.2.18",
+        "angular-translate": "^2.10.0",
+        "jquery": "^2.2.1",
+        "angular-translate-loader-url": "^2.10.0",
+        "angular-translate-loader-static-files": "^2.10.0",
+        "angular-translate-storage-local": "^2.10.0",
+        "requirejs": "^2.1.22",
+        "artTemplate": "^3.0.1",
+        "stateman": "^0.2.0"
+    },
+    "devDependencies": {
+        "angular-mocks": "^1.4.0"
+    },
+    "moduleName": "mayApp",
+    "overrides": {
+        "bootstrap": {
+            "main": [
+                "less/bootstrap.less",
+                "dist/css/bootstrap.css",
+                "dist/js/bootstrap.js"
+            ]
+        }
     }
-  }
 }
