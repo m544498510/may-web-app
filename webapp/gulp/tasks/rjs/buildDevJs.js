@@ -3,31 +3,34 @@
  */
 'use strict';
 
-var gulp = require('gulp');
+var gulp = require("gulp");
+var amdOptimize = require("amd-optimize");
 var $ = require('gulp-load-plugins')();
 var config = require('./../../config2.js');
 
-gulp.task('build:rjs',function(){
-    var result,appConfig,
-        mainFilter = $.filter("**/*.main.js",{restore:true}),
-        nMainFilter = $.filter(['**/*.js', '!**/*.main.js'],{restore:true}),
+gulp.task("build:rjs", function () {
+
+    var result, appConfig,rjsConfig,
         appNames = config.apps.appNames;
 
-    for(var i = 0; i < appNames.length; i++){
+    for (var i = 0; i < appNames.length; i++) {
         appConfig = config.apps[appNames[i]];
+        //requirejs config
+        rjsConfig = appConfig.rjsConfig;
+        rjsConfig['paths'] = config.libConfig.paths;
+        rjsConfig['shim'] = config.libConfig.shim;
         result = gulp.src(appConfig.js)
-            .pipe(mainFilter)
-            .pipe(gulp.dest(config.paths.scriptDist))
-            .pipe(mainFilter.restore())
-
-            .pipe(nMainFilter)
+            .pipe(amdOptimize(rjsConfig.mainJs,rjsConfig))
             .pipe($.sourcemaps.init({
                 loadMaps:true
             }))
-            .pipe($.concat(appNames[i]+'.js'))
+            .pipe($.concat(appNames[i] + '.js'))
+            .pipe($.uglify())
             .pipe($.sourcemaps.write())
             .pipe(gulp.dest(config.paths.scriptDist))
-
+            .pipe($.size({showFiles:true}))
     }
     return result;
+
+
 });

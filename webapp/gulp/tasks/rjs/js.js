@@ -6,25 +6,19 @@ gulp.task("amd", function () {
 
     return gulp.src("src2/modules/**/*.js")
         // Traces all modules and outputs them in the correct order.
-        .pipe(amdOptimize("managerApp/managerApp.main",{
-            baseUrl:"./src2/modules/",
+        .pipe(amdOptimize("rjsLib",{
+            baseUrl:"./src2/lib/",
             paths : {
-                'jquery':'../lib/jquery/dist/jquery.min',
-                'artTemplate':'../lib/artTemplate/dist/template',
-                'StateMan':'../lib/stateman/stateman.min'
+                'jquery':'jquery/dist/jquery.min',
+                'artTemplate':'artTemplate/dist/template',
+                'StateMan':'stateman/stateman.min'
             },
-/*
-            exclude:[
-                'artTemplate','jquery','StateMan'
-            ]
-*/
+            include:['jquery','artTemplate','StateMan'],
+            //exclude:['jquery']
         }))
-        .pipe($.sourcemaps.init({
-            loadMaps:true
-        }))
-        .pipe($.concat("app.js"))
-        .pipe($.uglify())
-        .pipe($.sourcemaps.write())
-        .pipe(gulp.dest("../webapp/dist/js/"));
+        .pipe($.concat("managerAppLib.js"))
+    //    .pipe($.uglify())
+        .pipe(gulp.dest("../webapp/dist/js/"))
+        .pipe($.size());
 
 });

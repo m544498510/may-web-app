@@ -9,7 +9,7 @@
  */
 ({
 
-    baseUrl: "./modules/",
+    baseUrl: "./aaa/",
     dir:"../dist",
 
     paths: {
@@ -18,11 +18,12 @@
         'StateMan':'../lib/stateman/stateman.min'
     },
     removeCombined:true,
-    generateSourceMaps:true,
+    preserveLicenseComments: true,
     modules:[
         {
-            name:"managerApp/managerApp.main",
-            exclude:[
+            name:"a",
+            create:true,
+            include:[
                 "StateMan",
                 "jquery",
                 "artTemplate"

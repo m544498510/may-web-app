@@ -76,7 +76,9 @@
 
 
 
-    <script data-main="./dist/js/app.js" src="./dist/lib/requirejs/require.js"></script>
+    <script src="./dist/lib/requirejs/require.js"></script>
+    <script src="./dist/lib/managerAppRjsLib.js"></script>
+    <script src="./dist/js/managerAppRjs.js"></script>
 
 
 </body>

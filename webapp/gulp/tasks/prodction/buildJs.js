@@ -11,7 +11,6 @@ gulp.task('build:js--production',function(){
     for(var i = 0; i < appNames.length; i++){
         appConfig = config.apps[appNames[i]];
         result = gulp.src(appConfig.js)
-            .pipe($.size())
             .pipe($.angularFilesort())
             .pipe($.ngAnnotate())
             .pipe($.concat(appNames[i]+'.js'))

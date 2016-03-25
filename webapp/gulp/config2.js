@@ -5,52 +5,14 @@
  */
 
 //根目录为webWorkSpace
-var appPath = '../webapp/';
-var moduleSrcPath = './src2/modules/';
-var styleSrc = './src/sass';
-var srcPath = './src/';
-var distPath = appPath+'dist/';
+var srcPath = './src2/';
+var moduleSrcPath = srcPath + 'modules/';
+var distPath = '../webapp/dist/';
 
 module.exports = {
-    paths: {
-        src:    srcPath,
-        dist:   distPath,
-        rev:   "src/revInfo/",
-
-        libSrc: srcPath + 'lib/**/*.*',
-        libDist: distPath + 'lib/',
-
-        scriptSrc: moduleSrcPath + '**/*.js',
-        scriptDist: distPath + 'js/',
-
-        styleSrc: styleSrc + '**/*.scss',
-        styleDist: distPath + 'css/',
-
-        htmlSrc: [
-            './src/modules/**/*.html',
-            './src/modules/**/*.jsp',
-            './src2/**/*.html'
-        ],
-        htmlDist: distPath + 'html',
-
-        imageSrc:'./src/img/**/*.*',
-//        imageSrc:[
-//            appPath + 'static/pages/img/**/*.*',
-//            appPath + 'static/global/img/**/*.*'
-//
-//        ],
-        imageDist: distPath + 'img/',
-
-
-        translateJson: './src/translate/**/*.jsonData',
-        translateDist: distPath + 'translate/',
-
-        oldSass: appPath + 'static/pages/css/'
-    },
-
     apps: {
-        appNames: ['testApp'],
-        testApp: {
+        appNames: ['managerAppRjs'],
+        managerAppRjs: {
             js: [
                 moduleSrcPath + 'managerApp/**/*.js',
                 moduleSrcPath + 'common/**/*.js'
@@ -59,7 +21,60 @@ module.exports = {
                 moduleSrcPath + '/managerApp/**/*.scss',
                 moduleSrcPath + 'common/**/*.scss'
             ],
-            name: 'testApp'
+            rjsConfig:{
+                baseUrl: './src2/modules/',
+                mainJs: 'managerApp/managerApp.main',
+                exclude:['jquery','artTemplate','StateMan']
+            }
         }
+    },
+
+    libConfig : {
+        paths:{
+            'jquery':'../lib/jquery/dist/jquery.min',
+            'artTemplate':'../lib/artTemplate/dist/template',
+            'StateMan':'../lib/stateman/stateman.min'
+        },
+        shim:{
+
+        }
+    },
+
+    paths: {
+        src:    srcPath,
+        moduleSrcPath:moduleSrcPath,
+        dist:   distPath,
+        rev:    './src/revInfo/',
+
+        libSrc: srcPath + 'lib/**/*.*',
+        libDist: distPath + 'lib/',
+        libTmp: srcPath+ 'libTmp/',
+
+        scriptSrc: moduleSrcPath + '**/*.js',
+        scriptDist: distPath + 'js/',
+
+        styleSrc: srcPath + 'sass/**/*.scss',
+        styleDist: distPath + 'css/',
+
+        htmlSrc: [
+            './src/modules/**/*.html',
+            './src/modules/**/*.jsp',
+            './src2/**/*.jsp'
+        ],
+        htmlDist: distPath + 'html',
+
+        imageSrc: srcPath + '/img/**/*.*',
+//        imageSrc:[
+//            appPath + 'static/pages/img/**/*.*',
+//            appPath + 'static/global/img/**/*.*'
+//
+//        ],
+        imageDist: distPath + 'img/',
+
+        nls: './src/nls/**/*.jsonData',
+        nlsDist: distPath + 'nls/',
+
+        oldSass: '../webapp/static/pages/css/'
     }
+
 };
