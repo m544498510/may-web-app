@@ -17,6 +17,7 @@ gulp.task('build:js', function () {
             .pipe($.angularFilesort())
             .pipe($.ngAnnotate())
             .pipe($.concat(appNames[i] + '.js'))
+            .pipe($.uglify())
             .pipe($.size({showFiles: true}))
             .pipe($.sourcemaps.write())
             .pipe(gulp.dest(config.paths.scriptDist))

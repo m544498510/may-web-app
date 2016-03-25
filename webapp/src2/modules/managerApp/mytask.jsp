@@ -54,7 +54,7 @@
             <div class="page-content">
 
                 <!-- BEGIN taskList -->
-                <!--=include ../task/taskList/taskList.html -->
+                <!--=include ./task/taskList/taskList.html -->
                 <!-- END taskList -->
 
 
@@ -76,8 +76,7 @@
 
 
 
-    <script data-main="./dist/js/app/test.main.js" src="./dist/lib/requirejs/require.js"></script>
-    <script  src="./dist/js/testApp.js"></script>
+    <script data-main="./dist/js/app.js" src="./dist/lib/requirejs/require.js"></script>
 
 
 </body>

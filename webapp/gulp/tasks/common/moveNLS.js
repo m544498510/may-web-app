@@ -9,7 +9,7 @@ var config = require('./../../config.js');
 /*
  * 转移国际化文件
  */
-gulp.task('move:translate', function () {
-    return gulp.src(config.paths.translateJson)
-        .pipe(gulp.dest(config.paths.translateDist))
+gulp.task('move:nls', function () {
+    return gulp.src(config.paths.nls)
+        .pipe(gulp.dest(config.paths.nlsDist))
 });
