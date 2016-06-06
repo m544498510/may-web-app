@@ -10,6 +10,7 @@
  * @name ngCookies
  * @description
  *
+ *
  * # ngCookies
  *
  * The `ngCookies` module provides a convenient wrapper for reading and writing browser cookies.

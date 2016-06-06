@@ -3,9 +3,7 @@
 browser.ignoreSynchronization = true;
 describe('e2e login',function(){
     beforeEach(function(){
-        browser.get('user/jeemaa_index.do');
-
-
+        browser.get('jeemaa/user/jeemaa_index.do');
     });
 
     it('no username',function(){
@@ -26,7 +24,8 @@ describe('e2e login',function(){
             element(by.id('password')).sendKeys('989410');
             element(by.tagName('button')).click();
             browser.sleep(1000);
-            expect(browser.getTitle()).toEqual('我的任务-译马网');
+            expect(element(by.className('btn-user-name')).getText())
+                .toEqual('鱼肠');
         });
 
     });
@@ -36,7 +35,7 @@ describe('e2e test', function () {
 
     describe('test1',function(){
         beforeEach(function(){
-            browser.get('task/mytask.do');
+            browser.get('jeemaa/task/mytask.do');
         });
 
         it('url Test',function(){

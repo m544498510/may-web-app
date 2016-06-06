@@ -8,7 +8,7 @@ var rimraf = require('rimraf');
 var config = require('../../../config.js');
 
 gulp.task('clean:translate',function(callback){
-    rimraf(config.paths.translateDist, callback);
+    rimraf(config.paths.nlsDist, callback);
 });
 
 

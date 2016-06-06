@@ -15,9 +15,9 @@ gulp.task('rjs', function () {
     var type = gutils.env.production ? 'production' : 'development';
 
     if (type == "development") {
-        runSequence('clean:html',['build:rjs','build:html']);
+        runSequence('clean:html',['build:rjs','build:lib'],'build:html');
     } else if (type == "production") {
-        runSequence('clean:html',['build:rjs--production','build:html--production']);
+        runSequence('clean:html',['build:rjs--production','build:lib--production'],'build:html--production');
     }
 
 });
