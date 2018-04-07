@@ -1,6 +1,0 @@
-
-managerAppRjsLib.js
-----------------
-jquery.js
-artTemplate.js
-StateMan.js
