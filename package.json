@@ -1,0 +1,39 @@
+{
+  "name": "may-web-app",
+  "version": "1.0.0",
+  "description": "learning the web front-end engineering",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m544498510/may-web-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m544498510/may-web-app/issues"
+  },
+  "homepage": "https://github.com/m544498510/may-web-app#readme",
+  "dependencies": {
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-json": "^2.0.2",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2",
+    "mongoose": "^5.0.13"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.45",
+    "@types/koa-bodyparser": "^4.2.0",
+    "@types/koa-json": "^2.0.18",
+    "@types/koa-router": "^7.0.27",
+    "@types/koa-static": "^4.0.0",
+    "@types/mongodb": "^3.0.10",
+    "@types/mongoose": "^5.0.9",
+    "@types/node": "^9.6.2",
+    "cross-env": "^5.1.4",
+    "typescript": "^2.8.1"
+  }
+}
