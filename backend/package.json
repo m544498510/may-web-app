@@ -4,7 +4,10 @@
   "description": "learning the web front-end engineering",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc && cross-env NODE_ENV=development node dist/main.js",
+    "start:pro": "tsc && cross-env NODE_ENV=production node dist/main.js",
+    "build": "tsc",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -25,6 +28,7 @@
     "mongoose": "^5.0.13"
   },
   "devDependencies": {
+    "@types/jest": "^22.2.3",
     "@types/koa": "^2.0.45",
     "@types/koa-bodyparser": "^4.2.0",
     "@types/koa-json": "^2.0.18",
@@ -34,6 +38,8 @@
     "@types/mongoose": "^5.0.9",
     "@types/node": "^9.6.2",
     "cross-env": "^5.1.4",
+    "jest": "^22.4.3",
+    "ts-jest": "^22.4.2",
     "typescript": "^2.8.1"
   }
 }
