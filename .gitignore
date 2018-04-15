@@ -59,10 +59,12 @@ typings/
 
 # IDE
 .idea
+.vscode
 
 #config file
 email.json
 config.js
+dist
 
 #data folder
 runningData

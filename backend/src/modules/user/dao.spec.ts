@@ -13,7 +13,7 @@ describe('user dao unit test', () => {
 
   const name = 'ut_name';
   const password = 'ut_password';
-  let id: String;
+  let id: string;
 
   describe('function createUser ', () => {
     test("should create user success", async () => {
@@ -45,7 +45,7 @@ describe('user dao unit test', () => {
   describe('function getUser', () => {
     test("should get user success", async () => {
       const user = await getUser(name, password);
-      expect(user).not.toBeUndefined();
+      expect(user).not.toBeNull();
       if (user) {
         expect(user._id).toEqual(id);
       }

@@ -12,7 +12,7 @@ export const mongoSchema = new Schema({
 });
 
 export interface IUser extends Document {
-  _id: String,
-  name: String,
-  password: String
+  _id: string,
+  name: string,
+  password: string
 }
