@@ -1,13 +1,12 @@
 import * as Router from 'koa-router';
+import pageRouter from './modules/page/router';
+import sessionRouter from './modules/user/sessionRouter';
 
 const router = new Router();
-
-router.use('/api', (e)=>{
-
+router.get('/session', ctx => {
+  ctx.body = 123;
 });
-
-router.get('/', (ctx, next) => {
-  ctx.body = 1;
-});
+router.use('/page', pageRouter.routes(), pageRouter.allowedMethods());
+router.use(sessionRouter.routes(), sessionRouter.allowedMethods());
 
 export default router;
