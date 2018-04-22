@@ -7,7 +7,6 @@ export const mongoSchema = new Schema({
   },
   password: {
     type: String,
-    required: true
   }
 });
 

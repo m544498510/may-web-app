@@ -2,16 +2,24 @@ import * as Router from 'koa-router';
 import {getUser} from './service';
 
 const router = new Router();
-router.post('/session', (ctx, next) => {
-  const param = ctx.request.query;
-  //const user = await getUser(param.name, param.password);
-  const user = {_id: 1, name:'xx', password: 'xxxxxx'};
-  console.log(ctx.request);
-  if(ctx.session){
-    ctx.session.user = user;
+router.post('/session',  async ctx => {
+  const param = ctx.request.body;
+  const user = await getUser(param.name, param.password);
+
+  if(user){
+    if(ctx.session){
+      ctx.session.user = user;
+    }
+    ctx.response.status = 200;
+    ctx.body = user;
+  }else{
+    ctx.response.status = 401;
   }
-  console.log(ctx.session);
-  ctx.body = 123;
+});
+router.delete('/session', ctx => {
+  if(ctx.session){
+    ctx.session.user = null;
+  }
 });
 
 export default router;

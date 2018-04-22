@@ -1,28 +1,31 @@
 import {model} from 'mongoose';
-import {mongoSchema, IUser} from './model';
+import {mongoSchema, IUser} from '../model';
 
 const userModel = model<IUser>('User', mongoSchema);
 
 export async function getUserList(): Promise<IUser[]> {
-  return await userModel.find();
+  return userModel.find().exec();
 }
 
-export async function getUser(name: string, password: string): Promise<IUser | null> {
-  const userList = await userModel.find({name, password});
-  return userList[0] || null;
+export function getUser(name: string, password: string): Promise<IUser | null> {
+  return userModel.findOne({name, password}).exec();
 }
 
-export async function getUserById(id: string): Promise<IUser | null> {
-  return await userModel.findById(id);
+export function getUserByName(name: string): Promise<IUser | null> {
+  return userModel.findOne({name}).exec();
 }
 
-export async function createUser(name: string, password: string): Promise<IUser> {
+export function getUserById(id: string): Promise<IUser | null> {
+  return  userModel.findById(id).exec();
+}
+
+export function createUser(name: string, password: string): Promise<IUser> {
   const newUser = new userModel({name, password});
-  return await newUser.save();
+  return newUser.save();
 }
 
 export async function updateUser(id: string, password: string): Promise<IUser | null> {
-  const user = await userModel.findById(id);
+  const user = await userModel.findById(id).exec();
   if(user){
     user.set({password});
     return await user.save();

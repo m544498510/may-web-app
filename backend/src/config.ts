@@ -2,5 +2,6 @@
 export const PORT = 9090;
 //db config
 export const DB_CFG = {
-  url: 'mongodb://localhost/maySecret'
+  url: 'mongodb://localhost/maySecret',
+  textUrl: 'mongodb://localhost/maySecretTest'
 };

@@ -1,10 +1,10 @@
 import * as mongoose from "mongoose";
-import {DB_CFG} from '../../config';
-import {createUser, deleteUser, getUser, getUserById, getUserList, updateUser} from './dao';
+import {DB_CFG} from '../../../config';
+import {createUser, deleteUser, getUser, getUserById, getUserByName, getUserList, updateUser} from './index';
 
 describe('user dao unit test', () => {
   beforeAll(() => {
-    return mongoose.connect(DB_CFG.url);
+    return mongoose.connect(DB_CFG.textUrl);
   });
 
   afterAll(() => {
@@ -38,13 +38,23 @@ describe('user dao unit test', () => {
   describe('function getUserList', () => {
     test('should return all user list', async () => {
       const list = await getUserList();
-      expect(list.length).toBe(2);
+      expect(list.length).toBe(1);
     })
   });
 
   describe('function getUser', () => {
     test("should get user success", async () => {
       const user = await getUser(name, password);
+      expect(user).not.toBeNull();
+      if (user) {
+        expect(user._id).toEqual(id);
+      }
+    });
+  });
+
+  describe('function getUserByName', () => {
+    test("should get user by name", async () => {
+      const user = await  getUserByName(name);
       expect(user).not.toBeNull();
       if (user) {
         expect(user._id).toEqual(id);

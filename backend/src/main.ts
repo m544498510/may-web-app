@@ -11,6 +11,7 @@ import {DB_CFG, PORT} from './config';
 import api from './routers';
 
 const app = new Koa();
+app.keys = ['some secret hurr'];
 
 //add the static server
 const publicPath = path.resolve(__dirname, '../public');
@@ -23,18 +24,22 @@ app.use(session({
   /** 'session' will result in a cookie that expires when session/browser is closed */
   /** Warning: If a session cookie is stolen, this cookie will never expire */
   maxAge: 1800000,
-  overwrite: true, /** (boolean) can overwrite or not (default true) */
-  httpOnly: true, /** (boolean) httpOnly or not (default true) */
-  signed: true, /** (boolean) signed or not (default true) */
-  rolling: false, /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
+  overwrite: true,
+  /** (boolean) can overwrite or not (default true) */
+  httpOnly: true,
+  /** (boolean) httpOnly or not (default true) */
+  signed: true,
+  /** (boolean) signed or not (default true) */
+  rolling: false,
+  /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
   renew: false, /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/
 }, app));
-app.use((ctx, next) => {
+app.use(async (ctx, next) => {
   //session filter
   const url = ctx.request.url;
-  if (url.includes('session') || (ctx.session && ctx.session.user)) {
-    next();
-  }else{
+  if (url.includes('/session') || url.includes('/user') || url.includes('/test') || (ctx.session && ctx.session.user)) {
+    await next();
+  } else {
     ctx.response.status = 403;
     ctx.redirect('/');
   }
@@ -50,7 +55,6 @@ const server = app.listen(PORT, () => {
   console.log('Listening at port', server.address().port)
 });
 
-/*
 mongoose.connect(DB_CFG.url)
   .then(() => {
     console.log('connect the mongodb');
@@ -58,5 +62,3 @@ mongoose.connect(DB_CFG.url)
   .catch(e => {
     console.error(e);
   });
-*/
-
