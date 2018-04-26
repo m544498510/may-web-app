@@ -3,7 +3,7 @@ import {mongoSchema, IUser} from '../model';
 
 const userModel = model<IUser>('User', mongoSchema);
 
-export async function getUserList(): Promise<IUser[]> {
+export function getUserList(): Promise<IUser[]> {
   return userModel.find().exec();
 }
 
