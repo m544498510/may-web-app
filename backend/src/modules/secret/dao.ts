@@ -7,6 +7,42 @@ export function getSecretListByUser(userId: string):Promise<ISecret[]>{
   return secretModel.find({userId: userId}).exec();
 }
 
-export function createSecret(userId: string, name: string, password: string, url: string){
-
+export async function createSecret(secretCfg: ISecret): Promise<ISecret>{
+  const model = new secretModel(secretCfg);
+  const secret = await model.save();
+  if(secret){
+    return secret;
+  }else{
+    throw new Error('create failed');
+  }
 }
+
+export async function updateSecret(secret: ISecret): Promise<ISecret> {
+  const oldSecret = await secretModel.findById(secret._id).exec();
+  if(oldSecret){
+    oldSecret.set(secret);
+    const newSecret = await oldSecret.save();
+    if(newSecret){
+      return newSecret;
+    }else{
+      throw 'save secret failed';
+    }
+  } else {
+    throw new Error('can not find secret by id');
+  }
+}
+
+export async function deleteSecret(id: string): Promise<boolean> {
+  const secret = secretModel.findById(id);
+  if(secret){
+    const result = await secret.remove();
+    if( result.n === 1 && result.ok === 1){
+      return true;
+    }else{
+      throw new Error('delete failed');
+    }
+  }else{
+    throw new Error('can not find secret by id');
+  }
+}
+
