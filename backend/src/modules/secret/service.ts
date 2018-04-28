@@ -1,9 +1,9 @@
 import {createCipher, createDecipher} from 'crypto';
 
-import {ISecret, Secret} from './model';
+import {ISecret, ISecretObj, Secret} from './model';
 import * as secretDao from './dao';
 
-export async function createSecret(secretCfg: ISecret): Promise<ISecret> {
+export async function createSecret(secretCfg: ISecretObj): Promise<ISecret> {
   try {
     secretCfg.password = Secret.aesEncrypt(secretCfg.password);
     const newSecretCfg = await secretDao.createSecret(secretCfg);
@@ -26,8 +26,8 @@ export async function getSecretList(userId: string): Promise<ISecret[]> {
   }
 }
 
-export function updateSecret(cfg: ISecret): Promise<ISecret> {
-  return secretDao.updateSecret(cfg);
+export function updateSecret(secretId:string, cfg: ISecretObj): Promise<ISecret> {
+  return secretDao.updateSecret(secretId, cfg);
 }
 
 export function deleteSecret(id: string): Promise<boolean> {

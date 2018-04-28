@@ -1,5 +1,5 @@
 import {model} from 'mongoose';
-import {mongoSchema, ISecret} from "./model";
+import {mongoSchema, ISecret, ISecretObj} from "./model";
 
 const secretModel = model<ISecret>('Secret', mongoSchema);
 
@@ -7,7 +7,7 @@ export function getSecretListByUser(userId: string):Promise<ISecret[]>{
   return secretModel.find({userId: userId}).exec();
 }
 
-export async function createSecret(secretCfg: ISecret): Promise<ISecret>{
+export async function createSecret(secretCfg: ISecretObj): Promise<ISecret>{
   const model = new secretModel(secretCfg);
   const secret = await model.save();
   if(secret){
@@ -17,8 +17,8 @@ export async function createSecret(secretCfg: ISecret): Promise<ISecret>{
   }
 }
 
-export async function updateSecret(secret: ISecret): Promise<ISecret> {
-  const oldSecret = await secretModel.findById(secret._id).exec();
+export async function updateSecret(secretId: string, secret: ISecretObj): Promise<ISecret> {
+  const oldSecret = await secretModel.findById(secretId).exec();
   if(oldSecret){
     oldSecret.set(secret);
     const newSecret = await oldSecret.save();

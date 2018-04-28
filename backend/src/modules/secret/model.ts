@@ -19,12 +19,15 @@ export const mongoSchema = new Schema({
   }
 });
 
-export interface ISecret extends Document {
-  _id: string,
+export interface ISecretObj {
   userId: string,
-  url: string,
+  url?: string,
   name: string,
   password: string
+}
+
+export interface ISecret extends Document, ISecretObj {
+  _id: string,
 }
 
 enum secretTypes {
