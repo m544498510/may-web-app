@@ -2,6 +2,7 @@ import * as Router from 'koa-router';
 import {getUser} from './service';
 
 const router = new Router();
+
 router.post('/session',  async ctx => {
   const param = ctx.request.body;
   const user = await getUser(param.name, param.password);
@@ -16,6 +17,7 @@ router.post('/session',  async ctx => {
     ctx.response.status = 401;
   }
 });
+
 router.delete('/session', ctx => {
   if(ctx.session){
     ctx.session.user = null;
