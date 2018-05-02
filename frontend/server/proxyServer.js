@@ -42,13 +42,11 @@ let config = {
 
 //  config.middleware = config.middleware.concat(logSequenceMock);
 
-/*
 config.proxy = {
-  target:'http://www.baidu.com',
+  target:'http://localhost:9090/',
   
    ws: false
 };
-*/
 config.serveStatic = [
   {
     route: '/asset',

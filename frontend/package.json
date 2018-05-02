@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "cross-env NODE_ENV=development  node server/proxyServer",
+    "start": "cross-env NODE_ENV=development  node server/proxyServer",
     "build": "cross-env NODE_ENV=production webpack",
     "prebuild": "rimraf ./dist"
   },
