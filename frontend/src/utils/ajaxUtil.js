@@ -27,21 +27,20 @@ export function errorHandle(error) {
   const response = error.response;
   let msgObj = getCheckMsg(response.status, response.data);
   msgObj.response = response;
-  if(response.status === 401){
-    window.location.href = './login';
+  if (response.status === 401) {
+    window.location.href = './#/login';
   }
   
   return Promise.reject(msgObj);
 }
 
 //content must be JSON or JSONText
-export function getCheckMsg(httpCode, content, defaultMsg) {
-  let code = httpCode;
-  let msg = defaultMsg || getMsgByHttpCode(httpCode);
-  
+export function getCheckMsg(httpCode, {code, msg}) {
   return {
+    httpCode: httpCode,
     code: code,
-    msg: msg,
+    title: getMsgByHttpCode(httpCode) || '',
+    msg: msg || ''
   };
 }
 

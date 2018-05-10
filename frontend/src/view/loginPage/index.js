@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import {Form, Icon, Input, Button, Modal} from 'antd';
+import {Form, Icon, Input, Button} from 'antd';
+import {Redirect} from 'react-router-dom';
+
+import {ajaxErrorDialog} from "~/view/common/MsgDlg";
 import {login} from '~/api/user';
 import Panel from '../common/panel';
 import "./index.less";
@@ -36,10 +39,8 @@ class LoginPage extends Component {
               this.setState({
                 loading: false
               });
-              
-              Modal.error({
-                content: e.msg
-              });
+  
+              ajaxErrorDialog(e);
             });
         }
       }
@@ -47,6 +48,11 @@ class LoginPage extends Component {
   };
   
   render() {
+    if(this.state.redirectToReferrer){
+      return <Redirect to={{pathName: '/'}} />
+    }
+    
+    
     const {getFieldDecorator} = this.props.form;
     let status;
     let statusHelp;

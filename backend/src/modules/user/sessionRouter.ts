@@ -14,7 +14,12 @@ router.post('/session',  async ctx => {
     ctx.response.status = 200;
     ctx.body = user;
   }else{
-    ctx.response.status = 401;
+    ctx.response.status = 400;
+    ctx.body = {
+      code: 1,
+      msg: "user name or password error"
+    };
+
   }
 });
 
