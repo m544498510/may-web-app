@@ -51,6 +51,9 @@ config.serveStatic = [
   {
     route: '/asset',
     dir: path.resolve(__dirname, '../asset')
+  }, {
+    route: '/page',
+    dir: path.resolve(__dirname, '../dist/index.html')
   }
 ];
 browserSync(config);

@@ -52,7 +52,7 @@ let config = {
       filename: '[name].css'
     }),
     new HtmlWebpackPlugin({
-      filename: 'test.html',
+      filename: 'index.html',
       template: path.resolve(__dirname, './src/index.html')
     })
   ],
@@ -123,7 +123,7 @@ if (ENV_PRODUCTION) {
       safe: true
     }
   }));
-  config.output.publicPath = './';
+  config.output.publicPath = '/dist';
 }
 
 module.exports = config;
