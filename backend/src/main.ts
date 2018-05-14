@@ -6,6 +6,7 @@ import * as json from 'koa-json';
 import * as bodyParser from 'koa-bodyparser';
 import * as staticTool from 'koa-static';
 import * as mongoose from 'mongoose';
+import * as mount from 'koa-mount';
 
 import {DB_CFG, PORT} from './config';
 import api from './routers';
@@ -15,7 +16,7 @@ app.keys = ['some secret hurr'];
 
 //add the static server
 const publicPath = path.resolve(__dirname, '../public');
-app.use(staticTool(publicPath));
+app.use(mount('/public', staticTool(publicPath)));
 
 //init session middleware
 app.use(session({
@@ -34,14 +35,19 @@ app.use(session({
   /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
   renew: false, /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/
 }, app));
+
 app.use(async (ctx, next) => {
   //session filter
   const url = ctx.request.url;
-  if (url.includes('/session') || url.includes('/user') || url.includes('/test') || (ctx.session && ctx.session.user)) {
-    await next();
-  } else {
-    ctx.response.status = 403;
-    ctx.redirect('/');
+  if(url.includes('/api')){
+    if (url.includes('/session') || url.includes('/user') || (ctx.session && ctx.session.user)) {
+      await next();
+    } else {
+      ctx.response.status = 401;
+    }
+  }else{
+    //pass the page request
+    next();
   }
 });
 

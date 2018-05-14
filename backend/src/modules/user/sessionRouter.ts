@@ -3,6 +3,10 @@ import {getUser} from './service';
 
 const router = new Router();
 
+router.get('/session', ctx => {
+  ctx.body = 123;
+});
+
 router.post('/session',  async ctx => {
   const param = ctx.request.body;
   const user = await getUser(param.name, param.password);
