@@ -1,37 +1,35 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {HashRouter, Route, Switch, Link} from "react-router-dom";
+import {BrowserRouter, Route, Switch, Link} from "react-router-dom";
 
 import LoginPage from './loginPage';
 import "./main.less";
 
-export default class Routers extends Component {
+export default class Page extends Component {
   render() {
     return (
-      <Fragment>
-        <HashRouter>
-          <div>
-            <ul>
-              <li>
-                <Link to="/public">public</Link>
-              </li>
-            </ul>
+      <BrowserRouter>
+        <div>
+          <ul>
+            <li>
+              <Link to="/public">public</Link>
+            </li>
+          </ul>
+          
+          <Switch>
+            <Route path="/public" component={Home}/>
+            <Route path="/login" component={LoginPage}/>
             
-            <Switch>
-              <Route path="/public" component={Home}/>
-              <Route path="/login" component={LoginPage}/>
-              
-              <Route path="/a" component={A}/>
-              <Route path="/b" component={B}/>
-            </Switch>
             <Route path="/a" component={A}/>
-            <Route path="/a/b" component={B}/>
-            <Route path="/inbox" component={Inbox} />
-
-
-          </div>
-        </HashRouter>
-      </Fragment>
+            <Route path="/b" component={B}/>
+          </Switch>
+          <Route path="/a" component={A}/>
+          <Route path="/a/b" component={B}/>
+          <Route path="/inbox" component={Inbox}/>
+        
+        
+        </div>
+      </BrowserRouter>
     );
   }
 }

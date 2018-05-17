@@ -3,11 +3,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
 
-import Routers from './view/routers';
+import Page from './view/page';
 
 const rootElement = document.getElementById('root');
 
-renderPage(Routers);
+renderPage(Page);
 
 function renderPage(Component) {
   ReactDOM.render(
@@ -22,8 +22,8 @@ function renderPage(Component) {
 
 //react hot loader
 if (module.hot) {
-  module.hot.accept('./view/routers', () => {
-    const NextPage = require('./view/routers.js').default;
+  module.hot.accept('./view/page', () => {
+    const NextPage = require('./view/page.js').default;
     renderPage(NextPage);
   });
 }

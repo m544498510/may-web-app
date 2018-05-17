@@ -1,17 +1,14 @@
-
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 //=========================================================
 //  ENVIRONMENT VARS
 //---------------------------------------------------------
 const NODE_ENV = process.env.NODE_ENV;
-const ENV_DEVELOPMENT = NODE_ENV === 'development';
-const ENV_PRODUCTION = NODE_ENV === 'production';
+const isDevMode = NODE_ENV === 'development';
 
 //=========================================================
 //  CONFIG
@@ -26,104 +23,94 @@ let config = {
     ]
   },
   entry: {
-    main: ['./src/main.js'],
+    app: path.resolve(__dirname, './src/main.js')
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist'
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function(module) {
-        // this assumes your vendor imports exist in the node_modules directory
-        return module.context && module.context.indexOf('node_modules') !== -1;
-      }
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: NODE_ENV ? JSON.stringify(NODE_ENV) : JSON.stringify(
-          'development')
-      }
-    }),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new ExtractTextPlugin({
-      filename: '[name].css'
-    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, './src/index.html')
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[name].css"
     })
   ],
-  
   module: {
     rules: [
       {
         test: /\.js$/,
         use: [
           'babel-loader'
-        ],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.less/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                minimize: true,
-                sourceMap: false
-              }
-            }, {
-              loader: 'less-loader',
-              options: {
-                modifyVars: {
-                  '@icon-url': '"/asset/antdIconFont/iconfont"'
-                }
-              }
-            }]
-        })
-      },
-      {
-        test: /\.css/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader']
-        })
+        ]
+      }, {
+        test: /\.css$/,
+        use: [
+          isDevMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      }, {
+        test: /\.less$/,
+        use: [
+          isDevMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'less-loader'
+        ]
       }
     ]
-  },
-  devtool: 'source-map'
+  }
 };
 
 //=====================================
 //  DEVELOPMENT
 //-------------------------------------
-if (ENV_DEVELOPMENT) {
-  for (var key in config.entry) {
-    let obj = config.entry[key];
-    obj.unshift('webpack-hot-middleware/client?reload=true');
-    obj.unshift('react-hot-loader/patch');
-  }
-  config.plugins.push(new webpack.HotModuleReplacementPlugin());
-  config.plugins.push(new webpack.NamedModulesPlugin());
+if (isDevMode) {
+  config = merge(config, {
+    mode: 'development',
+    devtool: 'inline-source-map',
+    devServer: {
+      contentBase: [
+        path.join(__dirname, "dist"),
+        path.join(__dirname, "asset")
+      ],
+      compress: true, //gzip
+      port: 5000,
+      hot: true,
+      proxy: {
+        '/api': 'http://localhost:9090/'
+      },
+      index: './dist/index.html'
+    },
+    plugins: [
+      new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin()
+    ]
+  });
 }
 //=====================================
 //  PRODUCTION
 //-------------------------------------
-if (ENV_PRODUCTION) {
-  config.plugins.push(new UglifyJSPlugin());
-  // Compress extracted CSS. We are using this plugin so that possible
-  // duplicated CSS from different components can be deduped.
-  config.plugins.push(new OptimizeCSSPlugin({
-    cssProcessorOptions: {
-      safe: true
+if (!isDevMode) {
+  config = merge(config, {
+    mode: 'production',
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendors",
+            chunks: "all"
+          }
+        }
+      }
     }
-  }));
-  config.output.publicPath = '/dist';
+  });
 }
 
 module.exports = config;
