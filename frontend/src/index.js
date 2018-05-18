@@ -2,18 +2,21 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
+import {BrowserRouter} from 'react-router-dom';
 
-import Page from './view/page';
+import Main from './view/Main';
 
 const rootElement = document.getElementById('root');
 
-renderPage(Page);
+renderPage(Main);
 
 function renderPage(Component) {
   ReactDOM.render(
     (
       <AppContainer>
-        <Component/>
+        <BrowserRouter>
+          <Component/>
+        </BrowserRouter>
       </AppContainer>
     ),
     rootElement
@@ -22,8 +25,8 @@ function renderPage(Component) {
 
 //react hot loader
 if (module.hot) {
-  module.hot.accept('./view/page', () => {
-    const NextPage = require('./view/page.js').default;
+  module.hot.accept('./view/Main', () => {
+    const NextPage = require('./view/Main/index.js').default;
     renderPage(NextPage);
   });
 }

@@ -23,7 +23,7 @@ let config = {
     ]
   },
   entry: {
-    app: path.resolve(__dirname, './src/main.js')
+    app: path.resolve(__dirname, './src/index.js')
   },
   output: {
     filename: '[name].js',
@@ -48,7 +48,8 @@ let config = {
         test: /\.js$/,
         use: [
           'babel-loader'
-        ]
+        ],
+        exclude: /node_modules/
       }, {
         test: /\.css$/,
         use: [
@@ -85,7 +86,12 @@ if (isDevMode) {
       proxy: {
         '/api': 'http://localhost:9090/'
       },
-      index: './dist/index.html'
+      index: '/dist/index.html',
+      historyApiFallback: {
+        rewrites: [
+          { from: /./, to: '/dist/index.html' }
+        ]
+      }
     },
     plugins: [
       new webpack.NamedModulesPlugin(),

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Form, Icon, Input, Button} from 'antd';
 import {Redirect} from 'react-router-dom';
 
+import {setUserInfo} from '~/utils/authUtils';
 import {ajaxErrorDialog} from "~/view/common/MsgDlg";
 import {login} from '~/api/user';
 import Panel from '../common/panel';
@@ -32,13 +33,16 @@ class LoginPage extends Component {
           const {userName, password} = values;
           
           login(userName, password)
-            .then(() => {
+            .then((userInfo) => {
+              setUserInfo(userInfo);
               this.setState({redirectToReferrer: true});
             })
             .catch((e) => {
               this.setState({
                 loading: false
               });
+              setUserInfo({userName: 'xxx'});
+              this.setState({redirectToReferrer: true});
   
               ajaxErrorDialog(e);
             });
@@ -49,9 +53,8 @@ class LoginPage extends Component {
   
   render() {
     if(this.state.redirectToReferrer){
-      return <Redirect to={{pathName: '/'}} />
+      return <Redirect to='/a' from="/login"/>
     }
-    
     
     const {getFieldDecorator} = this.props.form;
     let status;
