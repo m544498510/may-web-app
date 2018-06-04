@@ -8,7 +8,7 @@ export async function createSecret(secretCfg: ISecretObj): Promise<ISecret> {
     secretCfg.password = Secret.aesEncrypt(secretCfg.password);
     const newSecretCfg = await secretDao.createSecret(secretCfg);
     const secret = new Secret(newSecretCfg, Secret.secretTypes.encrypt);
-    return secret.decryptInstence;
+    return secret.decryptInstance;
   } catch (e) {
     throw e;
   }

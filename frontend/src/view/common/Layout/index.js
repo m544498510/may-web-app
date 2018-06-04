@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Route, Link} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
+
+import Header from '../Header';
 
 export default class Layout extends Component{
   static propTypes = {
@@ -11,8 +13,13 @@ export default class Layout extends Component{
     const {match} = this.props;
     return (
       <div>
-        <Route path={`${match.url}/a`} component={Topic} />
-        <Route path={`${match.url}/b`} component={B} />
+        <Header />
+        <div className="body">
+          <Switch>
+            <Route exact={false} path={`${match.url}a`} component={Topic} />
+            <Route path={`${match.url}b/c`} component={B} />
+          </Switch>
+        </div>
       </div>
     );
   }

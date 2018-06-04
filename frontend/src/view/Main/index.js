@@ -12,7 +12,7 @@ export default class Main extends Component {
       <div>
         <Switch>
           <Route path="/login" component={LoginPage}/>
-          <AuthRoute exact path="/a" component={Layout}/>
+          <AuthRoute path="/" component={Layout}/>
         </Switch>
       </div>
     );

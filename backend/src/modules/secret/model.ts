@@ -4,7 +4,11 @@ import {createCipher, createDecipher} from "crypto";
 export const mongoSchema = new Schema({
   userId: {
     type: String,
-    required: true
+    required: true,
+  },
+  siteName: {
+    type: String,
+    required: true,
   },
   url: {
     type: String,
@@ -15,12 +19,13 @@ export const mongoSchema = new Schema({
   },
   password: {
     type: String,
-    required: true
+    required: true,
   }
 });
 
 export interface ISecretObj {
   userId: string,
+  siteName: string,
   url?: string,
   name: string,
   password: string
@@ -60,13 +65,13 @@ export class Secret {
     }
   }
 
-  public get encryptInstence(): ISecret {
+  public get encryptInstance(): ISecret {
     return Object.assign({}, this._cfg, {
       password: this.encryptPsd
     });
   }
 
-  get decryptInstence(): ISecret {
+  get decryptInstance(): ISecret {
     return Object.assign({}, this._cfg, {
       password: this.decryptPsd
     });
