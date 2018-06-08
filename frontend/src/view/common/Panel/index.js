@@ -1,12 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class Panel extends Component {
   static propTypes = {
     title: PropTypes.string,
-    className: PropTypes.string
+    className: PropTypes.string,
   };
-  
+  static defaultProps = {
+    title: null,
+    className: '',
+  };
+
   render() {
     let panelTitle = '';
     if (this.props.title) {

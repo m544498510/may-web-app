@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
-export default class SecretPanel extends Component{
-  render(){
+export default class SecretPanel extends Component {
+  render() {
     return (
       <div>
         panel

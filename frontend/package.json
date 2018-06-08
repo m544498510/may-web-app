@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
-    "prebuild": "rimraf ./dist"
+    "prebuild": "rimraf ./dist",
+    "lint": "cross-env NODE_ENV=development eslint ./src --no-eslintrc  -c .eslintrc.js"
   },
   "author": "May",
   "license": "MIT",
@@ -18,10 +19,13 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "react-hot-loader": "^4.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",
     "babel-plugin-import": "^1.6.3",
     "babel-preset-env": "^1.6.1",
@@ -29,12 +33,17 @@
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.3",
     "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-import-resolver-webpack": "^0.10.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
     "html-webpack-plugin": "^3.2.0",
     "less": "^2.7.2",
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.0",
     "optimize-css-assets-webpack-plugin": "^4.0.1",
-    "react-hot-loader": "^4.2.0",
     "rimraf": "^2.6.2",
     "style-loader": "^0.21.0",
     "webpack": "^4.8.3",

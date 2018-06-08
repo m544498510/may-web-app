@@ -1,31 +1,31 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Route, Redirect} from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
-import {getUserInfo} from '~/utils/authUtils';
+import { getUserInfo } from '~/utils/authUtils';
 
-export default class AuthRoute extends Component{
+export default class AuthRoute extends Component {
   static propTypes = {
     component: PropTypes.func.isRequired,
-    path: PropTypes.string.isRequired
+    path: PropTypes.string.isRequired,
   };
-  
-  render(){
-    const {component: Component, ...rest} = this.props;
+
+  render() {
+    const { component: Target, ...rest } = this.props;
     return (
       <Route
         {...rest}
         render={props =>
-          getUserInfo() ? (
-            <Component {...props} />
+          (getUserInfo() ? (
+            <Target {...props} />
           ) : (
             <Redirect
               to={{
-                pathname: "/login",
-                state: { from: props.location }
+                pathname: '/login',
+                state: { from: props.location },
               }}
             />
-          )
+          ))
         }
       />
     );

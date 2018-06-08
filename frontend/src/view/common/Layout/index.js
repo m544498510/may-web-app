@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Header from '../Header';
 
-export default class Layout extends Component{
+export default class Layout extends Component {
   static propTypes = {
-    match: PropTypes.object.isRequired
+    match: PropTypes.object.isRequired,
   };
-  
-  render(){
-    const {match} = this.props;
+
+  render() {
+    const { match } = this.props;
     return (
       <div>
         <Header />
@@ -25,12 +25,12 @@ export default class Layout extends Component{
   }
 }
 
-function Topic(){
+function Topic() {
   return (
     <div> 123</div>
-  )
+  );
 }
 
-function B(){
-  return <div>b</div>
+function B() {
+  return <div>b</div>;
 }
