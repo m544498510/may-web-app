@@ -2,9 +2,11 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import Main from './view/Main';
+import store from './core/store';
 
 const rootElement = document.getElementById('root');
 
@@ -12,9 +14,11 @@ function renderPage(Component) {
   ReactDOM.render(
     (
       <AppContainer>
-        <BrowserRouter>
-          <Component />
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Component />
+          </BrowserRouter>
+        </Provider>
       </AppContainer>
     ),
     rootElement,

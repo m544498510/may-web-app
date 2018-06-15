@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import SecretPanel from '~/view/secretPage/Panel';
 
 import Header from '../Header';
+
+import { paths } from '~/view/routeCfg';
 
 export default class Layout extends Component {
   static propTypes = {
@@ -16,8 +19,13 @@ export default class Layout extends Component {
         <Header />
         <div className="body">
           <Switch>
-            <Route exact={false} path={`${match.url}a`} component={Topic} />
+            <Route
+              exact={false}
+              path={paths.psdManagerPage}
+              component={SecretPanel}
+            />
             <Route path={`${match.url}b/c`} component={B} />
+            <Redirect from="/" to={paths.psdManagerPage} />
           </Switch>
         </div>
       </div>
