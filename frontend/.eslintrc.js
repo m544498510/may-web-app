@@ -73,5 +73,8 @@ module.exports = {
     'function-paren-newline': [0],
     'no-restricted-globals': [0],
     'require-yield': [1],
+  
+    //for bug ignore rules
+    "template-curly-spacing": 0
   }
 };

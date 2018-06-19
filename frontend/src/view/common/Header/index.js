@@ -35,7 +35,6 @@ export default class Header extends Component {
       <div className="header">
         <div className="logo">May&apos;s site</div>
         <div className="right-tool-box">
-          <Dropdown />
         </div>
       </div>
     );
