@@ -1,4 +1,5 @@
 import axios from 'axios';
+import paths from '../view/routeCfg';
 
 const HttpCodeMsg = {
   200: 'Success',
@@ -18,6 +19,11 @@ const HttpCodeMsg = {
   509: 'Bandwidth Limit Exceeded',
   510: 'Not Extended',
 };
+
+let _history;
+export function setHistory(history) {
+  _history = history;
+}
 
 // content must be JSON or JSONText
 export function getCheckMsg(httpCode, { code, msg }) {
@@ -42,7 +48,11 @@ export function errorHandle(error) {
   const msgObj = getCheckMsg(response.status, response.data);
   msgObj.response = response;
   if (response.status === 401) {
-    window.location.href = './#/login';
+    if (_history && typeof _history === 'function') {
+      _history.push(paths.loginPage);
+    } else {
+      window.location.href = paths.loginPage;
+    }
   }
 
   return Promise.reject(msgObj);

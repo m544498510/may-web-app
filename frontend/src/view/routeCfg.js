@@ -1,4 +1,4 @@
-export const paths = {
+export default {
   rootPath: '/',
 
   loginPage: '/login',

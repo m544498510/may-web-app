@@ -3,12 +3,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import BrowserRouter from './view/common/BrowserRouter';
+
+import { setHistory } from './utils/ajaxUtil';
+import BrowserRouter, { createHistory } from './view/common/BrowserRouter';
 
 import Main from './view/Main';
 import store from './core/store';
 
 const rootElement = document.getElementById('root');
+
+const history = createHistory();
+setHistory(history);
 
 function renderPage(Component) {
   ReactDOM.render(
