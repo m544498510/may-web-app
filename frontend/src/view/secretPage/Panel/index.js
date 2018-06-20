@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 
-@withRouter
+import Panel from '~/view/common/Panel';
+import ToolBox from '../ToolsBox';
+import SecretTable from '../SecretTable';
+
 export default class SecretPanel extends Component {
   render() {
     return (
-      <div>
-        {this.props.history.location.pathname}
-      </div>
+      <Panel>
+        <ToolBox />
+        <SecretTable />
+      </Panel>
     );
   }
 }
