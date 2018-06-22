@@ -10,7 +10,12 @@ export default class SecretTable  extends Component{
       <Table
         className="secret-table"
       >
-      
+        <Column
+          title="Age"
+          dataIndex="age"
+          key="age"
+
+        />
       </Table>
     );
   }

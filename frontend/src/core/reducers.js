@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import reducer from './module/reducer';
+import reducer from './secret/reducer';
 
 export default combineReducers({
-  module: reducer,
+  secret: reducer,
 });
