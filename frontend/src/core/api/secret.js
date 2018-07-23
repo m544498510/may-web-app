@@ -6,21 +6,22 @@ export function getSecretList() {
     .then(list => list.map(item => new Secret(item)));
 }
 
-export function createSecret(name, password, url) {
+export function createSecret(secret) {
   return ajaxPost('/secret', {
-    name,
-    password,
-    url
+    name: secret.name,
+    password: secret.password,
+    url: secret.url,
+    siteName: secret.siteName
   })
     .then(item => new Secret(item));
 }
 
-export function updateSecret(id, name, password, url) {
+export function updateSecret(secret) {
   return ajaxPut('/secret', {
-    id,
-    name,
-    password,
-    url
+    id: secret.id,
+    name: secret.name,
+    password: secret.password,
+    url: secret.url
   })
     .then(item => new Secret(item));
 }

@@ -1,14 +1,21 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Table, Button} from 'antd';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import {connect} from 'react-redux';
+
+import {getSecretList, getShowPsdIds} from '~/core/modules/secret/selector';
 
 const {Column} = Table;
 
-export default class SecretTable extends PureComponent {
+export class SecretTable extends PureComponent {
   render() {
+    const {list, showPsdList} = this.props;
+    
     return (
       <Table
         className="secret-table"
+        dataSource={list}
       >
         <Column
           title="Site Name"
@@ -26,7 +33,7 @@ export default class SecretTable extends PureComponent {
           key="password"
           render={(text, item) => {
             let psd = '******';
-            if (item.isShowPsd) {
+            if (showPsdList.includes(item.id)) {
               psd = item.password;
             }
             return (
@@ -42,8 +49,6 @@ export default class SecretTable extends PureComponent {
                   >
                     <Button
                       icon="copy"
-                      
-                      
                     />
                   </CopyToClipboard>
                 </div>
@@ -55,3 +60,9 @@ export default class SecretTable extends PureComponent {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  list: getSecretList(state),
+  showPsdIds: getShowPsdIds(state),
+});
+export default connect(mapStateToProps, null)(SecretTable);
