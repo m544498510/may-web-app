@@ -15,7 +15,7 @@ export default function (state = defaultState, { type, payload }) {
       });
     case types.SET_SHOW_PSD_IDS:
       return Object.assign({}, state, {
-        showPsdIds: [...payload]
+        showPsdIds: payload
       });
     case types.SET_KEYWORD:
       return Object.assign({}, state, {

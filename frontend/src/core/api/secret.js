@@ -7,22 +7,12 @@ export function getSecretList() {
 }
 
 export function createSecret(secret) {
-  return ajaxPost('/secret', {
-    name: secret.name,
-    password: secret.password,
-    url: secret.url,
-    siteName: secret.siteName
-  })
+  return ajaxPost('/secret', secret)
     .then(item => new Secret(item));
 }
 
 export function updateSecret(secret) {
-  return ajaxPut('/secret', {
-    id: secret.id,
-    name: secret.name,
-    password: secret.password,
-    url: secret.url
-  })
+  return ajaxPut('/secret', secret)
     .then(item => new Secret(item));
 }
 

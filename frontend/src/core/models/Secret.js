@@ -5,5 +5,6 @@ export default class Secret {
     this.url = props.url || '';
     this.name = props.name || '';
     this.password = props.password || '';
+    this.note = props.note || '';
   }
 }
