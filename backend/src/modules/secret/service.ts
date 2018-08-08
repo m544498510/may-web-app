@@ -1,5 +1,3 @@
-import {createCipher, createDecipher} from 'crypto';
-
 import {ISecret, ISecretObj, Secret} from './model';
 import * as secretDao from './dao';
 

@@ -25,7 +25,9 @@ router.post('/secret', async ctx => {
       userId,
       name: param.name,
       password: param.password,
-      url: param.url
+      url: param.url,
+      note: param.note,
+      siteName: param.siteName,
     });
   } catch (e) {
     errorResponseHandle(ctx, e);
@@ -39,7 +41,9 @@ router.put('/secret', async ctx => {
       userId: param.userId,
       name: param.name,
       password: param.password,
-      url: param.url
+      url: param.url,
+      siteName: param.siteName,
+      note: param.note,
     });
   } catch (e) {
     errorResponseHandle(ctx, e);

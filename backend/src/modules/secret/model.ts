@@ -20,6 +20,10 @@ export const mongoSchema = new Schema({
   password: {
     type: String,
     required: true,
+  },
+  note: {
+    type: String,
+    required: false,
   }
 });
 
@@ -28,7 +32,8 @@ export interface ISecretObj {
   siteName: string,
   url?: string,
   name: string,
-  password: string
+  password: string,
+  note?: string,
 }
 
 export interface ISecret extends Document, ISecretObj {
@@ -44,7 +49,6 @@ const KEY = 'secret_key';
 
 export class Secret {
   static secretTypes = secretTypes;
-
 
   private readonly _cfg: ISecret;
 
