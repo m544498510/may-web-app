@@ -75,9 +75,9 @@ if (isDevMode) {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
+      watchContentBase: true,
       contentBase: [
-        path.join(__dirname, 'dist'),
-        path.join(__dirname, 'asset'),
+        path.join(__dirname, '../frontend'),
       ],
       compress: true, // gzip
       port: 5000,

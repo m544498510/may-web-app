@@ -4,8 +4,8 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { getUserInfo } from '~/utils/authUtils';
 
-export default function AuthRoute() {
-  const { component: Target, ...rest } = this.props;
+export default function AuthRoute(props) {
+  const { component: Target, ...rest } = props;
   return (
     <Route
       {...rest}

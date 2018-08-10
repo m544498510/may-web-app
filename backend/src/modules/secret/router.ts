@@ -8,10 +8,8 @@ const router = new Router();
 
 router.get('/secrets', async ctx => {
   try {
-    if (ctx.session) {
-      const userId = getUserId(ctx);
-      ctx.body = await getSecretList(userId);
-    }
+    const userId = getUserId(ctx);
+    ctx.body = await getSecretList(userId);
   } catch (e) {
     errorResponseHandle(ctx, e);
   }
