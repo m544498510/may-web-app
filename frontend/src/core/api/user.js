@@ -1,8 +1,9 @@
 import { ajaxDel, ajaxPost } from '~/utils/ajaxUtil';
 import { setUserInfo, delUserInfo } from '~/utils/authUtils';
+import apiPaths from './apiPath';
 
 export function login(name, psd) {
-  return ajaxPost('/session', {
+  return ajaxPost(apiPaths.session, {
     name,
     password: psd,
   }).then((userInfo) => {
@@ -12,7 +13,7 @@ export function login(name, psd) {
 }
 
 export function logout() {
-  return ajaxDel('/session').then(() => {
+  return ajaxDel(apiPaths.session).then(() => {
     delUserInfo();
   });
 }

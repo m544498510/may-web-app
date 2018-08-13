@@ -5,6 +5,8 @@ import { Dropdown, Menu, Icon } from 'antd';
 import { getUserInfo } from '~/utils/authUtils';
 import { logout } from '~/core/api/user';
 import { getHistory } from '~/view/common/BrowserRouter';
+import {ajaxErrorDialog} from '~/view/common/MsgDlg';
+
 import paths from '../../routeCfg';
 import './index.less';
 
@@ -19,7 +21,8 @@ export default class Header extends Component {
         } catch (e) {
           window.location.href = paths.loginPage;
         }
-      });
+      })
+      .catch(ajaxErrorDialog);
   };
 
   renderMenu() {
