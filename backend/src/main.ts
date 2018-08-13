@@ -39,6 +39,7 @@ app.use(session({
 app.use(async (ctx, next) => {
   //session filter
   const url = ctx.request.url;
+  //console.log(url);
   if(url.includes('/api')){
     if (url.includes('/session') || url.includes('/user') || (ctx.session && ctx.session.user)) {
       await next();
@@ -50,7 +51,6 @@ app.use(async (ctx, next) => {
     next();
   }
 });
-
 app.use(bodyParser());
 app.use(json());
 

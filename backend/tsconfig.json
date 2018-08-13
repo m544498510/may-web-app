@@ -10,7 +10,12 @@
       "es2015",
       "es6",
       "esnext.asynciterable"
-    ]
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "utils/*": [ "utils/*" ]
+    }
+
   },
   "include": [
     "src/**/*.ts"

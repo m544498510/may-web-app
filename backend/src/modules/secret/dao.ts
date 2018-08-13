@@ -25,7 +25,7 @@ export async function updateSecret(secretId: string, secret: ISecretObj): Promis
     if(newSecret){
       return newSecret;
     }else{
-      throw 'save secret failed';
+      throw new Error('save secret failed');
     }
   } else {
     throw new Error('can not find secret by id');
