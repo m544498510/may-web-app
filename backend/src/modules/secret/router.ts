@@ -1,7 +1,7 @@
 import * as Router from 'koa-router';
 
-import { getUserId } from '../../utils/sessionUtils';
-import * as responseUtil from '../../utils/responseUtils';
+import { getUserId } from 'utils/sessionUtils';
+import * as responseUtil from 'utils/responseUtils';
 import { createSecret, deleteSecret, updateSecret, getSecretList } from './service';
 
 const router = new Router();
