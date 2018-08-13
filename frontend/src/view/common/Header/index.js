@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown, Menu, Icon } from 'antd';
 
+import { getUserInfo } from '~/utils/authUtils';
 import { logout } from '~/core/api/user';
+import { getHistory } from '~/view/common/BrowserRouter';
 import paths from '../../routeCfg';
 import './index.less';
 
@@ -12,7 +14,11 @@ export default class Header extends Component {
   logoutHandle = () => {
     logout()
       .then(() => {
-
+        try {
+          getHistory().push(paths.loginPage);
+        } catch (e) {
+          window.location.href = paths.loginPage;
+        }
       });
   };
 
@@ -27,7 +33,7 @@ export default class Header extends Component {
         <Menu.Divider key="divider" className="divider" />
         <MenuItem>
           <a onClick={this.logoutHandle}>
-            <Icon type="logout"/>登出
+            <Icon type="logout" />登出
           </a>
         </MenuItem>
       </Menu>
@@ -35,13 +41,14 @@ export default class Header extends Component {
   }
 
   render() {
+    const { userName } = getUserInfo();
     return (
       <div className="header">
         <div className="logo">May&apos;s site</div>
         <div className="right-tool-box">
           <Dropdown overlay={this.renderMenu()}>
             <div className="user-box">
-              <Icon type="user" />xxx
+              <Icon type="user" />{userName}
             </div>
           </Dropdown>
         </div>

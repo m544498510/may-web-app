@@ -9,18 +9,18 @@ export default function AuthRoute(props) {
   return (
     <Route
       {...rest}
-      render={props =>
-          (getUserInfo() ? (
-            <Target {...props} />
-          ) : (
-            <Redirect
-              to={{
-                pathname: '/login',
-                state: { from: props.location },
-              }}
-            />
-          ))
-        }
+      render={prop =>
+        (getUserInfo() ? (
+          <Target {...prop} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: { from: prop.location },
+            }}
+          />
+        ))
+      }
     />
   );
 }
