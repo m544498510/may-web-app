@@ -1,7 +1,7 @@
 import * as Router from 'koa-router';
 import {getUser} from './service';
-import * as responseUtils from 'utils/responseUtils';
-import HttpError from 'utils/HttpError';
+import * as responseUtils from '../../utils/responseUtils';
+import HttpError from '../../utils/HttpError';
 
 const router = new Router();
 

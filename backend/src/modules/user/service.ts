@@ -23,3 +23,7 @@ export async function createUser(name: string, password: string): Promise<IUser 
     return null;
   }
 }
+
+export async function getAllUser(): Promise<IUser[] | null>{
+  return await userDao.getUserList()
+}
