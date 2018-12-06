@@ -1,2 +1,0 @@
-cd ../
-gulp batDefault --production
