@@ -1,4 +1,4 @@
-import { IToken } from '../../..';
+import { IToken } from '../../../lexer/token';
 
 export type IStatements = IStatement[];
 

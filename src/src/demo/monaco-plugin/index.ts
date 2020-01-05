@@ -7,18 +7,19 @@
 import * as _ from 'lodash';
 import { IParseResult } from '../..';
 import { DefaultOpts, IMonacoVersion, IParserType } from './default-opts';
+// @ts-ignore
 import * as MyWorker from './parser.worker';
 import { ICompletionItem, ITableInfo, reader, ICursorInfo } from '../sql-parser';
 
 const supportedMonacoEditorVersion = ['0.13.2', '0.15.6'];
 
-export function monacoSqlAutocomplete(monaco: any, editor: any, opts: Partial<DefaultOpts>) {
-  opts = _.defaults(opts || {}, new DefaultOpts(monaco));
+export function monacoSqlAutocomplete(monaco: any, editor: any, opts?: Partial<DefaultOpts>) {
+  const newOpts = _.defaults(opts || {}, new DefaultOpts(monaco));
 
-  if (supportedMonacoEditorVersion.indexOf(opts.monacoEditorVersion) === -1) {
+  if (newOpts && supportedMonacoEditorVersion.indexOf(newOpts.monacoEditorVersion) === -1) {
     throw Error(
       `monaco-editor version ${
-        opts.monacoEditorVersion
+        newOpts.monacoEditorVersion
       } is not allowed, only support ${supportedMonacoEditorVersion.join(' ')}`,
     );
   }
@@ -35,14 +36,14 @@ export function monacoSqlAutocomplete(monaco: any, editor: any, opts: Partial<De
       setTimeout(() => {
         const model = editor.getModel();
 
-        asyncParser(editor.getValue(), model.getOffsetAt(editor.getPosition()), opts.parserType).then(parseResult => {
+        asyncParser(editor.getValue(), model.getOffsetAt(editor.getPosition()), newOpts.parserType).then(parseResult => {
           resolve(parseResult);
 
           if (currentEditVersion !== editVersion) {
             return;
           }
 
-          opts.onParse(parseResult);
+          newOpts.onParse(parseResult);
 
           if (parseResult.error) {
             const newReason =
@@ -74,37 +75,37 @@ export function monacoSqlAutocomplete(monaco: any, editor: any, opts: Partial<De
 
             model.getPositionAt(parseResult.error.token);
 
-            monaco.editor.setModelMarkers(model, opts.language, [
+            monaco.editor.setModelMarkers(model, newOpts.language, [
               {
                 ...errorPosition,
                 message: newReason,
-                severity: getSeverityByVersion(monaco, opts.monacoEditorVersion),
+                severity: getSeverityByVersion(monaco, newOpts.monacoEditorVersion),
               },
             ]);
           } else {
-            monaco.editor.setModelMarkers(editor.getModel(), opts.language, []);
+            monaco.editor.setModelMarkers(editor.getModel(), newOpts.language, []);
           }
         });
       });
     });
   });
 
-  monaco.languages.registerCompletionItemProvider(opts.language, {
+  monaco.languages.registerCompletionItemProvider(newOpts.language, {
     triggerCharacters: ' $.:{}=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),
     provideCompletionItems: async () => {
       const currentEditVersion = editVersion;
       const parseResult: IParseResult = await currentParserPromise;
 
       if (currentEditVersion !== editVersion) {
-        return returnCompletionItemsByVersion([], opts.monacoEditorVersion);
+        return returnCompletionItemsByVersion([], newOpts.monacoEditorVersion);
       }
 
       const cursorInfo = await reader.getCursorInfo(parseResult.ast, parseResult.cursorKeyPath);
 
-      const parserSuggestion = opts.pipeKeywords(parseResult.nextMatchings);
+      const parserSuggestion = newOpts.pipeKeywords(parseResult.nextMatchings);
 
       if (!cursorInfo) {
-        return returnCompletionItemsByVersion(parserSuggestion, opts.monacoEditorVersion);
+        return returnCompletionItemsByVersion(parserSuggestion, newOpts.monacoEditorVersion);
       }
 
       switch (cursorInfo.type) {
@@ -112,7 +113,7 @@ export function monacoSqlAutocomplete(monaco: any, editor: any, opts: Partial<De
           const cursorRootStatementFields = await reader.getFieldsFromStatement(
             parseResult.ast,
             parseResult.cursorKeyPath,
-            opts.onSuggestTableFields,
+            newOpts.onSuggestTableFields,
           );
 
           // group.fieldName
@@ -123,7 +124,7 @@ export function monacoSqlAutocomplete(monaco: any, editor: any, opts: Partial<De
             'groupPickerName',
           );
 
-          const functionNames = await opts.onSuggestFunctionName(cursorInfo.token.value);
+          const functionNames = await newOpts.onSuggestFunctionName(cursorInfo.token.value);
 
           return returnCompletionItemsByVersion(
             cursorRootStatementFields
@@ -132,18 +133,18 @@ export function monacoSqlAutocomplete(monaco: any, editor: any, opts: Partial<De
               .concat(
                 groups
                   ? Object.keys(groups).map(groupName => {
-                      return opts.onSuggestFieldGroup(groupName);
+                      return newOpts.onSuggestFieldGroup(groupName);
                     })
                   : [],
               ),
-            opts.monacoEditorVersion,
+            newOpts.monacoEditorVersion,
           );
         case 'tableFieldAfterGroup':
           // 字段 . 后面的部分
           const cursorRootStatementFieldsAfter = await reader.getFieldsFromStatement(
             parseResult.ast,
             parseResult.cursorKeyPath as any,
-            opts.onSuggestTableFields,
+            newOpts.onSuggestTableFields,
           );
 
           return returnCompletionItemsByVersion(
@@ -155,26 +156,26 @@ export function monacoSqlAutocomplete(monaco: any, editor: any, opts: Partial<De
                 );
               })
               .concat(parserSuggestion),
-            opts.monacoEditorVersion,
+            newOpts.monacoEditorVersion,
           );
         case 'tableName':
-          const tableNames = await opts.onSuggestTableNames(cursorInfo as ICursorInfo<ITableInfo>);
+          const tableNames = await newOpts.onSuggestTableNames(cursorInfo as ICursorInfo<ITableInfo>);
 
-          return returnCompletionItemsByVersion(tableNames.concat(parserSuggestion), opts.monacoEditorVersion);
+          return returnCompletionItemsByVersion(tableNames.concat(parserSuggestion), newOpts.monacoEditorVersion);
         case 'functionName':
-          return opts.onSuggestFunctionName(cursorInfo.token.value);
+          return newOpts.onSuggestFunctionName(cursorInfo.token.value);
         default:
-          return returnCompletionItemsByVersion(parserSuggestion, opts.monacoEditorVersion);
+          return returnCompletionItemsByVersion(parserSuggestion, newOpts.monacoEditorVersion);
       }
     },
   });
 
-  monaco.languages.registerHoverProvider(opts.language, {
+  monaco.languages.registerHoverProvider(newOpts.language, {
     provideHover: async (model: any, position: any) => {
       const parseResult: IParseResult = await asyncParser(
         editor.getValue(),
         model.getOffsetAt(position),
-        opts.parserType,
+        newOpts.parserType,
       );
 
       const cursorInfo = await reader.getCursorInfo(parseResult.ast, parseResult.cursorKeyPath);
@@ -190,25 +191,25 @@ export function monacoSqlAutocomplete(monaco: any, editor: any, opts: Partial<De
           const extra = await reader.findFieldExtraInfo(
             parseResult.ast,
             cursorInfo,
-            opts.onSuggestTableFields,
+            newOpts.onSuggestTableFields,
             parseResult.cursorKeyPath,
           );
-          contents = await opts.onHoverTableField(cursorInfo.token.value, extra);
+          contents = await newOpts.onHoverTableField(cursorInfo.token.value, extra);
           break;
         case 'tableFieldAfterGroup':
           const extraAfter = await reader.findFieldExtraInfo(
             parseResult.ast,
             cursorInfo,
-            opts.onSuggestTableFields,
+            newOpts.onSuggestTableFields,
             parseResult.cursorKeyPath,
           );
-          contents = await opts.onHoverTableField(cursorInfo.token.value, extraAfter);
+          contents = await newOpts.onHoverTableField(cursorInfo.token.value, extraAfter);
           break;
         case 'tableName':
-          contents = await opts.onHoverTableName(cursorInfo as ICursorInfo);
+          contents = await newOpts.onHoverTableName(cursorInfo as ICursorInfo);
           break;
         case 'functionName':
-          contents = await opts.onHoverFunctionName(cursorInfo.token.value);
+          contents = await newOpts.onHoverFunctionName(cursorInfo.token.value);
           break;
         default:
       }

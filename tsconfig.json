@@ -9,6 +9,8 @@
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "strictNullChecks": false,
+
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -17,7 +19,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "preserve"
   },
   "include": [
     "src"

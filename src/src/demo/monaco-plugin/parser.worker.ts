@@ -1,6 +1,5 @@
 import { mysqlParser } from '../sql-parser';
 
-// eslint-disable-next-line no-restricted-globals
 const ctx: Worker = self as any;
 
 ctx.onmessage = event => {

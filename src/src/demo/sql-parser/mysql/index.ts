@@ -1,5 +1,5 @@
 import { createParser } from '../../..';
-import { IStatements } from '../base/define';
+import { IStatements } from '..';
 import { sqlTokenizer } from './lexer';
 import { root } from './parser';
 
